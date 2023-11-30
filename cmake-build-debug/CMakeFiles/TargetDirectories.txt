@@ -1,0 +1,3 @@
+/Users/filipecorreia/Code/aed/avioes/cmake-build-debug/CMakeFiles/avioes.dir
+/Users/filipecorreia/Code/aed/avioes/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/filipecorreia/Code/aed/avioes/cmake-build-debug/CMakeFiles/rebuild_cache.dir
