@@ -54,11 +54,26 @@ private:
 
 public:
     unsigned char addCountry(const std::string& country){
-        if(std::find(countries.begin(), countries.end(), country) == countries.end()){
+        int find = findCountry(country);
+        if(find == -1){
+            // IT WAS NOT FOUND
             countries.push_back(country);
             lastused++;
+        }else{
+            // IT WAS FOUND
+            return find;
         }
+
         return lastused--;
+    }
+
+    unsigned char findCountry(const std::string& country){
+        for(int i = 0; i < countries.size(); i++){
+            if(countries[i] == country){
+                return i;
+            }
+        }
+        return -1;
     }
 
 };

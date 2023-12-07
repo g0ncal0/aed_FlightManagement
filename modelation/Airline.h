@@ -8,6 +8,9 @@
 #include <string>
 #include <unordered_set>
 
+
+
+
 class Airline {
 private:
     std::string code;
@@ -22,15 +25,35 @@ public:
         this->callsign = callsign;
         this->country = country;
     }
-    std::string getCode(){return code;}
-    std::string getName(){return name;}
-    std::string getCallSign(){return callsign;}
+    const std::string getCode(){return code;}
+    const std::string getName(){return name;}
+    const std::string getCallSign(){return callsign;}
 
 };
 
+struct airlineHash
+{
+    // Hash function
+    // TODO
+    int operator() (const Airline& p) const {
+        // FIND HASH FUNCTION APPLICABLE
+        return 0;
+    }
+
+    // Equality function
+    // TODO
+    bool operator() (const Airline& p1, const Airline& p2) const {
+        if(p1.getCode() == p2.getCode()){
+            return true;
+        }
+        return false;
+    }
+};
+
+
 class Airlines {
 private:
-    std::unordered_set<Airline> airlines;
+    std::unordered_set<Airline, > airlines;
 
 public:
     void addAirline(const std::string& code, const std::string& name, const std::string& callsign, unsigned char country){
