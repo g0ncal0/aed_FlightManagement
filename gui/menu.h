@@ -14,7 +14,6 @@ public:
     menu();
 
 private:
-    gui GUI;
     void prompt();
 
 };

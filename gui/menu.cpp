@@ -7,14 +7,13 @@
 
 
 menu::menu() {
-    GUI.print("HELLO!");
-    while(false){
-        prompt();
-    }
+    gui::print("HELLO!");
+    gui::printlist({"first", "second"});
+    int res = gui::getInt("What's your option");
 }
 
 void menu::prompt() {
-    GUI.print("Here are your options.");
+    gui::print("Here are your options.");
 
 }
 

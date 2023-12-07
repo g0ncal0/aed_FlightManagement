@@ -3,4 +3,4 @@ project(avioes)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(avioes main.cpp graph/graph.cpp graph/graph.h gui/menu.cpp gui/menu.h gui/gui.h)
+add_executable(avioes main.cpp graph/graph.cpp graph/graph.h gui/menu.cpp gui/menu.h gui/gui.h modelation/Airport.cpp modelation/Airport.h modelation/Airline.cpp modelation/Airline.h modelation/Location.h)
