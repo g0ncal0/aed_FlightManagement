@@ -13,9 +13,31 @@
 
 typedef std::pair<std::string, unsigned char> parcc;
 
+
+struct parccHash
+{
+    // Hash function
+    // TODO
+    int operator() (const parcc& p) const {
+        // FIND HASH FUNCTION APPLICABLE
+        return 0;
+    }
+
+    // Equality function
+    // TODO
+    bool operator() (const parcc& p1, const parcc& p2) const {
+        if(p1.second == p2.second){
+            return true;
+        }
+        return false;
+    }
+};
+
+
+
 class Cities {
     // Store the name and country
-    std::unordered_set<parcc> cities;
+    std::unordered_set<parcc, parccHash, parccHash> cities;
 
 public:
     std::vector<std::string> getCitiesOnCountry(int country);
