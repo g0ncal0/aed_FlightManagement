@@ -7,13 +7,34 @@
 
 
 #include <string>
+#include <unordered_set>
 
 class Airport {
 private:
-    int code;
+    std::string code;
     std::string name;
     unsigned char country;
+    float latitude;
+    float longitude;
 
+public:
+    Airport(std::string code, std::string name, unsigned char country, float latitude, float longitude){
+        this->code = code;
+        this->name = name;
+        this->country = country;
+        this->latitude = latitude;
+        this->longitude = longitude;
+    }
+};
+
+class Airports {
+private:
+    std::unordered_set<Airport> airports;
+
+public:
+    void addAirport(std::string code, std::string name, unsigned char country, float latitude, float longitude){
+        airports.insert(Airport(code, name, country, latitude, longitude));
+    }
 
 };
 
