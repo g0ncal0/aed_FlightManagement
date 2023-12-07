@@ -1,6 +1,8 @@
 #include <iostream>
+#include "gui/menu.h"
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+    menu m = menu();
+    m.prompt();
     return 0;
 }
