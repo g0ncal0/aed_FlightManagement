@@ -25,9 +25,9 @@ public:
         this->callsign = callsign;
         this->country = country;
     }
-    const std::string getCode(){return code;}
-    const std::string getName(){return name;}
-    const std::string getCallSign(){return callsign;}
+    std::string getCode() const{return code;}
+    std::string getName() const{return name;}
+    std::string getCallSign() const{return callsign;}
 
 };
 
@@ -53,7 +53,7 @@ struct airlineHash
 
 class Airlines {
 private:
-    std::unordered_set<Airline, > airlines;
+    std::unordered_set<Airline, airlineHash, airlineHash> airlines;
 
 public:
     void addAirline(const std::string& code, const std::string& name, const std::string& callsign, unsigned char country){
