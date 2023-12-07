@@ -6,8 +6,13 @@
 #define AVIOES_AIRPORT_H
 
 
-class Airport {
+#include <string>
 
+class Airport {
+private:
+    int code;
+    std::string name;
+    unsigned char country;
 
 
 };
