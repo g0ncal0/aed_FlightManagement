@@ -3,6 +3,5 @@
 
 int main() {
     menu m = menu();
-    m.prompt();
     return 0;
 }

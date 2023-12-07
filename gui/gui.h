@@ -9,10 +9,11 @@
 #include <iostream>
 
 class gui {
-    void print(std::string& s){
-        std::cout << s << "/n";
-    }
 
+public:
+    static void print(const char* s){
+        std::cout << s << '\n';
+    }
 };
 
 

@@ -7,10 +7,14 @@
 
 
 menu::menu() {
-
+    GUI.print("HELLO!");
+    while(false){
+        prompt();
+    }
 }
 
 void menu::prompt() {
-    std::cout << "Welcome";
+    GUI.print("Here are your options.");
+
 }
 
