@@ -60,7 +60,7 @@ public:
     void addAirline(const std::string& code, const std::string& name, const std::string& callsign, unsigned char country){
         airlines.insert(Airline(code, name, callsign, country));
     }
-    tabHAirline getAirlines() {
+    const tabHAirline& getAirlines() {
         return airlines;
     }
 

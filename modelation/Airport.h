@@ -19,7 +19,7 @@ private:
     float longitude;
 
 public:
-    Airport(std::string code, std::string name, unsigned char country, float latitude, float longitude){
+    Airport(const std::string& code, const std::string& name, unsigned char country, float latitude, float longitude){
         this->code = code;
         this->name = name;
         this->country = country;
@@ -49,13 +49,18 @@ struct airportHash
     }
 };
 
+typedef std::unordered_set<Airport, airportHash, airportHash> tabHAirport;
+
 class Airports {
 private:
-    std::unordered_set<Airport, airportHash, airportHash> airports;
+    tabHAirport airports;
 
 public:
     void addAirport(std::string code, std::string name, unsigned char country, float latitude, float longitude){
         airports.insert(Airport(code, name, country, latitude, longitude));
+    }
+    const tabHAirport& getAirports() {
+        return airports;
     }
 
 };
