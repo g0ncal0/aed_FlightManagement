@@ -4,8 +4,8 @@
 
 #include "parser.h"
 
-Airlines parse_airlines(Countries& countries) {
-    std::ifstream classes("air.csv");
+Airlines parser::parse_airlines(Countries& countries) {
+    std::ifstream classes("../dataset/airports.csv");
     std::string line;
 
     Airlines airlines;
@@ -36,3 +36,4 @@ Airlines parse_airlines(Countries& countries) {
 
     return airlines;
 }
+

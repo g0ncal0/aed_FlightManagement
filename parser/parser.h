@@ -17,9 +17,12 @@
 
 
 class parser {
+public:
+    static Airlines parse_airlines(Countries& countries);
+    static Airports parse_airports(Countries& countries);
 
-Airlines parse_airline();
-Airports parse_students();
+private:
+
 };
 
 

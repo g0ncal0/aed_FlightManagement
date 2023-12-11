@@ -19,9 +19,9 @@ private:
     unsigned char country;
 
 public:
-    Airline(std::string code, std::string name, std::string callsign, unsigned char country){
+    Airline(const std::string& code, const std::string& name, const std::string& callsign, unsigned char country){
         this->code = code;
-        this->callsign = callsign;
+        this->name = name;
         this->callsign = callsign;
         this->country = country;
     }
@@ -37,27 +37,31 @@ struct airlineHash
     // TODO
     int operator() (const Airline& p) const {
         // FIND HASH FUNCTION APPLICABLE
-        return 0;
+        int v = 0;
+        for (char c : p.getCode()) v = 457 * v + c;
+        v %= 457;
+        return v;
     }
 
     // Equality function
     // TODO
     bool operator() (const Airline& p1, const Airline& p2) const {
-        if(p1.getCode() == p2.getCode()){
-            return true;
-        }
-        return false;
+        return p1.getCode() == p2.getCode();
     }
 };
 
+typedef std::unordered_set<Airline, airlineHash, airlineHash> tabHAirline;
 
 class Airlines {
 private:
-    std::unordered_set<Airline, airlineHash, airlineHash> airlines;
+    tabHAirline airlines;
 
 public:
     void addAirline(const std::string& code, const std::string& name, const std::string& callsign, unsigned char country){
         airlines.insert(Airline(code, name, callsign, country));
+    }
+    tabHAirline getAirlines() {
+        return airlines;
     }
 
 };
