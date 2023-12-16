@@ -34,9 +34,7 @@ public:
 struct airlineHash
 {
     // Hash function
-    // TODO
     int operator() (const Airline& p) const {
-        // FIND HASH FUNCTION APPLICABLE
         int v = 0;
         for (char c : p.getCode()) v = 457 * v + c;
         v %= 457;
@@ -44,7 +42,6 @@ struct airlineHash
     }
 
     // Equality function
-    // TODO
     bool operator() (const Airline& p1, const Airline& p2) const {
         return p1.getCode() == p2.getCode();
     }

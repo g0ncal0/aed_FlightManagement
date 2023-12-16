@@ -3,93 +3,80 @@
 //
 
 #include "graph.h"
+#include <string>
+
+Vertex::Vertex(std::string in): iata(in) {}
+
+Edge::Edge(Vertex *d, double w): dest(d), weight(w) {}
 
 
-template <class T>
-Vertex<T>::Vertex(T in): info(in) {}
-
-template <class T>
-Edge<T>::Edge(Vertex<T> *d, double w): dest(d), weight(w) {}
-
-
-template <class T>
-int Graph<T>::getNumVertex() const {
+int Graph::getNumVertex() const {
     return vertexSet.size();
 }
 
-template <class T>
-vector<Vertex<T> * > Graph<T>::getVertexSet() const {
+vector<Vertex * > Graph::getVertexSet() const {
     return vertexSet;
 }
 
-template<class T>
-T Vertex<T>::getInfo() const {
-    return info;
+string Vertex::getIATA() const {
+    return iata;
 }
 
-template<class T>
-void Vertex<T>::setInfo(T in) {
-    Vertex::info = in;
+void Vertex::setIATA(std::string in) {
+    Vertex::iata = in;
 }
 
-template<class T>
-bool Vertex<T>::isProcessing() const {
+bool Vertex::isProcessing() const {
     return processing;
 }
 
-template<class T>
-void Vertex<T>::setProcessing(bool p) {
+void Vertex::setProcessing(bool p) {
     Vertex::processing = p;
 }
 
-template<class T>
-Vertex<T> *Edge<T>::getDest() const {
+Vertex *Edge::getDest() const {
     return dest;
 }
 
-template<class T>
-void Edge<T>::setDest(Vertex<T> *d) {
+void Edge::setDest(Vertex *d) {
     Edge::dest = d;
 }
 
-template<class T>
-double Edge<T>::getWeight() const {
+double Edge::getWeight() const {
     return weight;
 }
 
-template<class T>
-void Edge<T>::setWeight(double weight) {
+void Edge::setWeight(double weight) {
     Edge::weight = weight;
+}
+
+set<string> Edge::getAirlines() {
+    return airlines;
 }
 
 /*
  * Auxiliary function to find a vertex with a given content.
  */
-template <class T>
-Vertex<T> * Graph<T>::findVertex(const T &in) const {
+Vertex * Graph::findVertex(const string &in) const {
     for (auto v : vertexSet)
-        if (v->info == in)
+        if (v->iata == in)
             return v;
     return NULL;
 }
 
-template <class T>
-bool Vertex<T>::isVisited() const {
+bool Vertex::isVisited() const {
     return visited;
 }
 
-template <class T>
-void Vertex<T>::setVisited(bool v) {
+void Vertex::setVisited(bool v) {
     Vertex::visited = v;
 }
 
-template<class T>
-const vector<Edge<T>> &Vertex<T>::getAdj() const {
+const vector<Edge> &Vertex::getAdj() const {
     return adj;
 }
 
-template <class T>
-void Vertex<T>::setAdj(const vector<Edge<T>> &adj) {
+void Vertex::setAdj(const vector<Edge> &adj) {
     Vertex::adj = adj;
 }
 
@@ -98,11 +85,10 @@ void Vertex<T>::setAdj(const vector<Edge<T>> &adj) {
  *  Adds a vertex with a given content or info (in) to a graph (this).
  *  Returns true if successful, and false if a vertex with that content already exists.
  */
-template <class T>
-bool Graph<T>::addVertex(const T &in) {
+bool Graph::addVertex(const string &in) {
     if ( findVertex(in) != NULL)
         return false;
-    vertexSet.push_back(new Vertex<T>(in));
+    vertexSet.push_back(new Vertex(in));
     return true;
 }
 
@@ -112,8 +98,7 @@ bool Graph<T>::addVertex(const T &in) {
  * destination vertices and the edge weight (w).
  * Returns true if successful, and false if the source or destination vertex does not exist.
  */
-template <class T>
-bool Graph<T>::addEdge(const T &sourc, const T &dest, double w) {
+bool Graph::addEdge(const string &sourc, const string &dest, double w) {
     auto v1 = findVertex(sourc);
     auto v2 = findVertex(dest);
     if (v1 == NULL || v2 == NULL)
@@ -126,9 +111,8 @@ bool Graph<T>::addEdge(const T &sourc, const T &dest, double w) {
  * Auxiliary function to add an outgoing edge to a vertex (this),
  * with a given destination vertex (d) and edge weight (w).
  */
-template <class T>
-void Vertex<T>::addEdge(Vertex<T> *d, double w) {
-    adj.push_back(Edge<T>(d, w));
+void Vertex::addEdge(Vertex *d, double w) {
+    adj.push_back(Edge(d, w));
 }
 
 
@@ -137,8 +121,7 @@ void Vertex<T>::addEdge(Vertex<T> *d, double w) {
  * The edge is identified by the source (sourc) and destination (dest) contents.
  * Returns true if successful, and false if such edge does not exist.
  */
-template <class T>
-bool Graph<T>::removeEdge(const T &sourc, const T &dest) {
+bool Graph::removeEdge(const string &sourc, const string &dest) {
     auto v1 = findVertex(sourc);
     auto v2 = findVertex(dest);
     if (v1 == NULL || v2 == NULL)
@@ -151,8 +134,7 @@ bool Graph<T>::removeEdge(const T &sourc, const T &dest) {
  * from a vertex (this).
  * Returns true if successful, and false if such edge does not exist.
  */
-template <class T>
-bool Vertex<T>::removeEdgeTo(Vertex<T> *d) {
+bool Vertex::removeEdgeTo(Vertex *d) {
     for (auto it = adj.begin(); it != adj.end(); it++)
         if (it->dest  == d) {
             adj.erase(it);
@@ -166,10 +148,9 @@ bool Vertex<T>::removeEdgeTo(Vertex<T> *d) {
  *  all outgoing and incoming edges.
  *  Returns true if successful, and false if such vertex does not exist.
  */
-template <class T>
-bool Graph<T>::removeVertex(const T &in) {
+bool Graph::removeVertex(const string &in) {
     for (auto it = vertexSet.begin(); it != vertexSet.end(); it++)
-        if ((*it)->info  == in) {
+        if ((*it)->iata  == in) {
             auto v = *it;
             vertexSet.erase(it);
             for (auto u : vertexSet)

@@ -13,18 +13,16 @@
 
 typedef std::pair<std::string, unsigned char> parcc;
 
-
 struct parccHash
 {
     // Hash function
-    // TODO
     int operator() (const parcc& p) const {
         // FIND HASH FUNCTION APPLICABLE
         return 0;
     }
 
     // Equality function
-    // TODO
+
     bool operator() (const parcc& p1, const parcc& p2) const {
         if(p1.second == p2.second){
             return true;
@@ -34,16 +32,20 @@ struct parccHash
 };
 
 
+typedef  std::unordered_set<parcc, parccHash, parccHash> unsetcities;
+
 
 class Cities {
     // Store the name and country
-    std::unordered_set<parcc, parccHash, parccHash> cities;
+    unsetcities cities;
 
 public:
     std::vector<std::string> getCitiesOnCountry(int country);
     void addCity(std::string name, unsigned char country){
         cities.insert(parcc(name, country));
     }
+
+    unsetcities getCities(){return cities;}
 };
 
 class Countries {
@@ -53,7 +55,7 @@ private:
     unsigned char lastused = 0;
 
 public:
-    unsigned char addCountry(const std::string& country){
+    int addCountry(const std::string& country){
         int find = findCountry(country);
         if(find == -1){
             // IT WAS NOT FOUND
@@ -67,7 +69,7 @@ public:
         return lastused--;
     }
 
-    unsigned char findCountry(const std::string& country){
+    int findCountry(const std::string& country){
         for(int i = 0; i < countries.size(); i++){
             if(countries[i] == country){
                 return i;
@@ -75,8 +77,12 @@ public:
         }
         return -1;
     }
+    std::vector<std::string> getCountries(){return countries;}
 
 };
+
+
+
 
 
 #endif //AVIOES_LOCATION_H

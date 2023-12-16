@@ -7,14 +7,19 @@
 
 
 #include "gui.h"
+#include "../modelation/Model.h"
 
 class menu {
 
-public:
-    menu();
-
 private:
+    Model model;
+
     void prompt();
+    void react(int action);
+
+public:
+    menu(Model& model);
+
 
 };
 

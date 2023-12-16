@@ -55,6 +55,7 @@ class Airports {
 private:
     tabHAirport airports;
 
+
 public:
     void addAirport(std::string code, std::string name, unsigned char country, float latitude, float longitude){
         airports.insert(Airport(code, name, country, latitude, longitude));

@@ -3,7 +3,7 @@
 #include "parser/parser.h"
 
 int main() {
-    //menu m = menu();
+
 
     Countries countries;
     Cities cities;
@@ -16,6 +16,14 @@ int main() {
     for (const Airport& airport : airports.getAirports()) {
         std::cout << airport.getCode() << "              " << airport.getName() << "               " << std::endl;
     }
+    Model model = Model();
+    model.setAirlines(airlines);
+    model.setAirports(airports);
+    model.setCities(cities);
+    model.setCountries(countries);
+    menu m = menu(model);
+
+
 
     return 0;
 }

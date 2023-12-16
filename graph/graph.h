@@ -9,69 +9,71 @@
 #include <cstddef>
 #include <vector>
 #include <queue>
+#include <string>
+#include <set>
 
 using namespace std;
 
-template <class T> class Edge;
-template <class T> class Graph;
-template <class T> class Vertex;
+class Edge;
+class Graph;
+class Vertex;
 
 
 /****************** Provided structures  ********************/
 
-template <class T>
 class Vertex {
-    T info;                // contents
-    vector<Edge<T> > adj;  // list of outgoing edges
+    std::string iata;                // contents
+    vector<Edge> adj;  // list of outgoing edges
     bool visited;          // auxiliary field
     bool processing;       // auxiliary field
 
-    void addEdge(Vertex<T> *dest, double w);
-    bool removeEdgeTo(Vertex<T> *d);
+    void addEdge(Vertex *dest, double w);
+    bool removeEdgeTo(Vertex *d);
 public:
-    Vertex(T in);
-    T getInfo() const;
-    void setInfo(T in);
+    Vertex(string in);
+    string getIATA() const;
+    void setIATA(string in);
     bool isVisited() const;
     void setVisited(bool v);
     bool isProcessing() const;
     void setProcessing(bool p);
-    const vector<Edge<T>> &getAdj() const;
-    void setAdj(const vector<Edge<T>> &adj);
-    friend class Graph<T>;
+    const vector<Edge> &getAdj() const;
+    void setAdj(const vector<Edge> &adj);
+    friend class Graph;
 };
 
 
-template <class T>
 class Edge {
-    Vertex<T> * dest;      // destination vertex
-    double weight;         // edge weight
+    Vertex * dest;  // destination vertex
+    double weight;  // edge weight
+    set<string> airlines; // airlines that operate certain trip (represented by edge)
+
 public:
-    Edge(Vertex<T> *d, double w);
-    Vertex<T> *getDest() const;
-    void setDest(Vertex<T> *dest);
+    Edge(Vertex *d, double w);
+    Vertex *getDest() const;
+    void setDest(Vertex *dest);
     double getWeight() const;
     void setWeight(double weight);
-    friend class Graph<T>;
-    friend class Vertex<T>;
+    set<string> getAirlines();
+    friend class Graph;
+    friend class Vertex;
 };
 
-template <class T>
 class Graph {
-    vector<Vertex<T> *> vertexSet;    // vertex set
-    void dfsVisit(Vertex<T> *v,  vector<T> & res) const;
-    bool dfsIsDAG(Vertex<T> *v) const;
+    vector<Vertex *> vertexSet;    // vertex set
+    void dfsVisit(Vertex *v,  vector<string> & res) const;
+    bool dfsIsDAG(Vertex *v) const;
 public:
-    Vertex<T> *findVertex(const T &in) const;
+    Vertex *findVertex(const string &in) const;
     int getNumVertex() const;
-    bool addVertex(const T &in);
-    bool removeVertex(const T &in);
-    bool addEdge(const T &sourc, const T &dest, double w);
-    bool removeEdge(const T &sourc, const T &dest);
-    vector<Vertex<T> * > getVertexSet() const;
-    vector<T> dfs() const;
-    vector<T> dfs(const T & source) const;
-    vector<T> bfs(const T &source) const;
+    bool addVertex(const string &in);
+    bool removeVertex(const string &in);
+    bool addEdge(const string &sourc, const string &dest, double w);
+    bool removeEdge(const string &sourc, const string &dest);
+    vector<Vertex * > getVertexSet() const;
+    vector<string> dfs() const;
+    vector<string> dfs(const string & source) const;
+    vector<string> bfs(const string &source) const;
 };
 
 

@@ -24,10 +24,23 @@ public:
         }
         std::cout << '\n';
     }
+    static void printUnstyledlist(const std::list<std::string>& list){
+
+        for(const auto& el : list){
+            std::cout <<"> " << el << '\n';
+        }
+        std::cout << '\n';
+    }
 
     static int getInt(const char* s){
         std::cout << s << ": ";
         int res;
+        std::cin >> res;
+        return res;
+    }
+    static std::string getString(const char* s){
+        std::cout << s << ": ";
+        std::string res;
         std::cin >> res;
         return res;
     }
