@@ -31,7 +31,6 @@ void menu::prompt() {
                     "The greatest air traffic capacity airport",
                     "Essential Airports",
                     "Best Flight",
-
                     });
 
 }

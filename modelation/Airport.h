@@ -14,6 +14,8 @@ class Airport {
 private:
     std::string code;
     std::string name;
+
+    //std::string city;
     unsigned char country;
     float latitude;
     float longitude;
@@ -33,7 +35,6 @@ public:
 struct airportHash
 {
     // Hash function
-    // TODO
     int operator() (const Airport& p) const {
         // FIND HASH FUNCTION APPLICABLE
         int v = 0;
@@ -43,7 +44,6 @@ struct airportHash
     }
 
     // Equality function
-    // TODO
     bool operator() (const Airport& p1, const Airport& p2) const {
         return p1.getCode() == p2.getCode();
     }
@@ -60,8 +60,16 @@ public:
     void addAirport(std::string code, std::string name, unsigned char country, float latitude, float longitude){
         airports.insert(Airport(code, name, country, latitude, longitude));
     }
+
     const tabHAirport& getAirports() {
         return airports;
+    }
+
+    std::list<Airport> getAirportsOnCity(std::string name){
+        for(auto airport : airports){
+            // Lacks logic, because city is not being stored on airport!
+            //if(airport.)
+        }
     }
 
 };
