@@ -37,7 +37,7 @@ Airlines parser::parse_airlines(Countries& countries) {
     return airlines;
 }
 
-Airports parser::parse_airports(Countries& countries, Cities& cities) {
+Airports parser::parse_airports(Countries& countries, Cities& cities, Graph& flights) {
     std::ifstream file("../dataset/airports.csv");
     std::string line;
 
@@ -62,7 +62,7 @@ Airports parser::parse_airports(Countries& countries, Cities& cities) {
         getline(iss, city, ',');
         getline(iss, country, ',');
         getline(iss, s_latitude, ',');
-        getline(iss, s_longitude, ',');
+        getline(iss, s_longitude, '\r');
         latitude = std::stof(s_latitude);
         longitude = std::stof(s_longitude);
 
@@ -70,9 +70,52 @@ Airports parser::parse_airports(Countries& countries, Cities& cities) {
         cities.addCity(city, codeCountry);
 
         airports.addAirport(code, name, city, codeCountry, latitude, longitude);
+        flights.addVertex(code);
     }
 
     file.close();
 
     return airports;
+}
+
+void parser::parse_flights(Graph& flights) {
+    std::ifstream file("../dataset/flights.csv");
+    std::string line;
+
+    std::string trash;
+    getline(file, trash);
+
+    if (!file.is_open()) {
+        std::cout << "not ok";
+        return;
+    }
+
+    while (getline(file, line))
+    {
+        std::istringstream iss(line);
+
+        std::string source, destination, airline;
+
+        getline(iss, source, ',');
+        getline(iss, destination, ',');
+        getline(iss, airline, '\r');
+
+        Vertex * airport_src = flights.findVertex(source);
+        bool checkFlight = false;
+        for (Edge& edge : airport_src->getAdj()) {
+            if (edge.getDest()->getIATA() == destination) {
+                checkFlight = true;
+                edge.addAirline(airline);
+                break;
+            }
+        }
+        if (!checkFlight) {
+            Vertex * airport_dest = flights.findVertex(destination);
+            Edge edge(airport_dest, 0);  //Não vai ficar assim. Tem de se meter a distancia
+            edge.addAirline(airline);
+            airport_src->addAdj(edge);
+        }
+    }
+
+    file.close();
 }

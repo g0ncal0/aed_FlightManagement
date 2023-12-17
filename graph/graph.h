@@ -38,7 +38,9 @@ public:
     bool isProcessing() const;
     void setProcessing(bool p);
     const vector<Edge> &getAdj() const;
+    vector<Edge> &getAdj();
     void setAdj(const vector<Edge> &adj);
+    void addAdj(const Edge& edge);
     friend class Graph;
 };
 
@@ -55,6 +57,7 @@ public:
     double getWeight() const;
     void setWeight(double weight);
     set<string> getAirlines();
+    void addAirline(std::string airline);
     friend class Graph;
     friend class Vertex;
 };
