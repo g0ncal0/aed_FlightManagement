@@ -69,7 +69,7 @@ Airports parser::parse_airports(Countries& countries, Cities& cities) {
         unsigned char codeCountry = countries.addCountry(country);
         cities.addCity(city, codeCountry);
 
-        airports.addAirport(code, name, codeCountry, latitude, longitude);
+        airports.addAirport(code, name, city, codeCountry, latitude, longitude);
     }
 
     file.close();

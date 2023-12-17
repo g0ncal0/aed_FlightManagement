@@ -14,6 +14,7 @@
 #include "../modelation/Airline.h"
 #include "../modelation/Airport.h"
 #include "../modelation/Location.h"
+#include "../modelation/Model.h"
 
 
 class parser {

@@ -8,6 +8,7 @@
 
 #include <string>
 #include <unordered_set>
+#include <list>
 #include "Airline.h"
 
 class Airport {
@@ -15,21 +16,23 @@ private:
     std::string code;
     std::string name;
 
-    //std::string city;
+    std::string city;
     unsigned char country;
     float latitude;
     float longitude;
 
 public:
-    Airport(const std::string& code, const std::string& name, unsigned char country, float latitude, float longitude){
+    Airport(const std::string& code, const std::string& name, const std::string city, unsigned char country, float latitude, float longitude){
         this->code = code;
         this->name = name;
+        this->city = city;
         this->country = country;
         this->latitude = latitude;
         this->longitude = longitude;
     }
     std::string getCode() const {return code;}
     std::string getName() const {return name;}
+    std::string getCity() const {return city;}
 };
 
 struct airportHash
@@ -57,8 +60,8 @@ private:
 
 
 public:
-    void addAirport(std::string code, std::string name, unsigned char country, float latitude, float longitude){
-        airports.insert(Airport(code, name, country, latitude, longitude));
+    void addAirport(const std::string& code, const std::string& name, const std::string& city, unsigned char country, float latitude, float longitude){
+        airports.insert(Airport(code, name, city, country, latitude, longitude));
     }
 
     const tabHAirport& getAirports() {

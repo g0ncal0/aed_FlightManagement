@@ -5,7 +5,7 @@
 #ifndef AVIOES_MODEL_H
 #define AVIOES_MODEL_H
 
-
+#include <cmath>
 #include "Airport.h"
 #include "../graph/graph.h"
 #include "Location.h"
