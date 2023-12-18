@@ -33,6 +33,8 @@ public:
     std::string getCode() const {return code;}
     std::string getName() const {return name;}
     std::string getCity() const {return city;}
+    float getLatitude() const {return latitude;}
+    float getLongitude() const {return longitude;}
 };
 
 struct airportHash
@@ -68,11 +70,16 @@ public:
         return airports;
     }
 
-    std::list<Airport> getAirportsOnCity(std::string name){
+    std::list<Airport> getAirportsOnCity(const std::string& name){
         for(auto airport : airports){
             // Lacks logic, because city is not being stored on airport!
             //if(airport.)
         }
+    }
+
+    const Airport& getAirport(const std::string& code) const {
+        Airport airport_key(code, "", "", 0, 0, 0);
+        return *airports.find(airport_key);
     }
 
 };

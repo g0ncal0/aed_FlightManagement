@@ -11,7 +11,7 @@ int main() {
     Graph flights;
     Airlines airlines = parser::parse_airlines(countries);
     Airports airports = parser::parse_airports(countries, cities, flights);
-    parser::parse_flights(flights);
+    parser::parse_flights(flights, airports);
 
     /*for (const Airline& airline : airlines.getAirlines()) {
         std::cout << airline.getCode() << "              " << airline.getName() << "               " << airline.getCallSign() << std::endl;
@@ -24,7 +24,7 @@ int main() {
 
     for (Vertex * v : flights.getVertexSet()) {
         for (Edge edge : v->getAdj()) {
-            cout << v->getIATA() << "   " << edge.getDest()->getIATA() << "   ";
+            cout << v->getIATA() << "   " << edge.getDest()->getIATA() << "   " << edge.getWeight() << "   ";
             bool checkFirst = true;
             for (std::string al : edge.getAirlines()) {
                 if (checkFirst) {

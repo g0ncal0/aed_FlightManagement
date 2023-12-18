@@ -34,7 +34,7 @@ public:
     Airlines getAirlines(){return airlines;}
     Airports getAirports(){return airports;}
 
-    double calculateDistance(double lat1, double lon1, double lat2, double lon2);
+    static double calculateDistance(double lat1, double lon1, double lat2, double lon2);
 
     list<string> getStatistics();
 

@@ -21,7 +21,7 @@ class parser {
 public:
     static Airlines parse_airlines(Countries& countries);
     static Airports parse_airports(Countries& countries, Cities& cities, Graph& flights);
-    static void parse_flights(Graph& flights);
+    static void parse_flights(Graph& flights, const Airports& airports);
 
 private:
 

@@ -78,7 +78,7 @@ Airports parser::parse_airports(Countries& countries, Cities& cities, Graph& fli
     return airports;
 }
 
-void parser::parse_flights(Graph& flights) {
+void parser::parse_flights(Graph& flights, const Airports& airports) {
     std::ifstream file("../dataset/flights.csv");
     std::string line;
 
@@ -111,7 +111,9 @@ void parser::parse_flights(Graph& flights) {
         }
         if (!checkFlight) {
             Vertex * airport_dest = flights.findVertex(destination);
-            Edge edge(airport_dest, 0);  //Não vai ficar assim. Tem de se meter a distancia
+            const Airport& infoAirportSrc = airports.getAirport(source);
+            const Airport& infoAirportDest = airports.getAirport(destination);
+            Edge edge(airport_dest, Model::calculateDistance(infoAirportSrc.getLatitude(), infoAirportSrc.getLongitude(), infoAirportDest.getLatitude(), infoAirportDest.getLongitude()));
             edge.addAirline(airline);
             airport_src->addAdj(edge);
         }
