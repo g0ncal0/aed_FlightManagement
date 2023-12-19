@@ -65,12 +65,12 @@ public:
         return airports;
     }
 
-    std::list<Airport> getAirportsOnCity(std::string name){
-        for(auto airport : airports){
+//    std::list<Airport> getAirportsOnCity(std::string name){
+//        for(auto airport : airports){
             // Lacks logic, because city is not being stored on airport!
             //if(airport.)
-        }
-    }
+ //       }
+//    }
 
 };
 

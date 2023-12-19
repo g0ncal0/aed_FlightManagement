@@ -41,6 +41,7 @@ list<string> Model::getStatistics() {
     res.push_back("There are " + to_string(airports.getAirports().size()) + " airports");
     res.push_back("There are " + to_string(cities.getCities().size()) + " cities");
     res.push_back("There are " + to_string(countries.getCountries().size()) + " countries");
+    res.push_back("There are " + to_string(airlines.getAirlines().size()) + " airlines");
     return res;
 }
 
