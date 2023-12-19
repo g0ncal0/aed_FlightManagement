@@ -5,14 +5,14 @@
 #ifndef AVIOES_MODEL_H
 #define AVIOES_MODEL_H
 
-
+#include <cmath>
 #include "Airport.h"
 #include "../graph/graph.h"
 #include "Location.h"
 
 struct flight{
-    string iata_arrival;
     string iata_departure;
+    string iata_arrival;
     string airline;
 };
 
@@ -34,10 +34,10 @@ public:
     Airlines getAirlines(){return airlines;}
     Airports getAirports(){return airports;}
 
-    double calculateDistance(double lat1, double lon1, double lat2, double lon2);
+    static double calculateDistance(double lat1, double lon1, double lat2, double lon2);
 
     list<string> getStatistics();
-
+    list<flight> getFlightsOfAirline(string airline);
 
     list<flight> getFlightsOnAirport(string iata);
 };

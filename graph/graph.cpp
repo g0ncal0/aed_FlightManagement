@@ -54,6 +54,10 @@ set<string> Edge::getAirlines() {
     return airlines;
 }
 
+void Edge::addAirline(std::string airline) {
+    airlines.insert(airline);
+}
+
 /*
  * Auxiliary function to find a vertex with a given content.
  */
@@ -76,8 +80,16 @@ const vector<Edge> &Vertex::getAdj() const {
     return adj;
 }
 
+vector<Edge> &Vertex::getAdj() {
+    return adj;
+}
+
 void Vertex::setAdj(const vector<Edge> &adj) {
     Vertex::adj = adj;
+}
+
+void Vertex::addAdj(const Edge& edge) {
+    adj.push_back(edge);
 }
 
 
@@ -159,4 +171,14 @@ bool Graph::removeVertex(const string &in) {
             return true;
         }
     return false;
+}
+
+
+
+int Graph::countEdges() const {
+    int res = 0;
+    for(Vertex* v: vertexSet){
+        res += v->getAdj().size();
+    }
+    return res;
 }

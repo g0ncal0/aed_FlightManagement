@@ -48,9 +48,15 @@ void menu::react(int action){
             break;
 
         case 2:
-            string iata = gui::getString("Airport's IATA");
-            model.getFlightsOnAirport(iata);
+            gui::printFlightList(model.getFlightsOnAirport(gui::getString("Airport's IATA")));
             break;
+        case 3:
+            // TO IMPLEMENT: SOUNDS COMPLICATED
+            break;
+        case 4:
+            gui::printFlightList(model.getFlightsOfAirline(gui::getString("Airline Code")));
+            break;
+        case 5:
 
 
     }

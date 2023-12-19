@@ -9,6 +9,7 @@
 #include <iostream>
 
 #include <list>
+#include "../modelation/Model.h"
 
 class gui {
 
@@ -43,6 +44,25 @@ public:
         std::string res;
         std::cin >> res;
         return res;
+    }
+
+    static void printFlightList(const list<flight>& flights){
+        std::cout << "\nDEP  " << "ARR  " << "AIRL\n";
+        std::cout << "-------------\n";
+        list<std::string> airlinesfound;
+        list<std::string> destinationsfound;
+        for(auto& f : flights){
+            std::cout << f.iata_departure << "  " << f.iata_arrival << "  " << f.airline << "\n";
+            if(find(airlinesfound.begin(), airlinesfound.end(), f.airline) == airlinesfound.end()){
+                airlinesfound.push_back(f.airline);
+            }
+            if(std::find(destinationsfound.begin(), destinationsfound.end(), f.iata_arrival) == destinationsfound.end()){
+                destinationsfound.push_back(f.iata_arrival);
+            }
+        }
+
+        std::cout << "Total of " << flights.size() << " flights, operated by " << airlinesfound.size() << " different airlines and with " << destinationsfound.size() << " different destinations.\n";
+
     }
 };
 

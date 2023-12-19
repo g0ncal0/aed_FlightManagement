@@ -35,9 +35,23 @@ list<flight> Model::getFlightsOnAirport(string iata) {
     return res;
 }
 
+list<flight> Model::getFlightsOfAirline(string airline){
+    list<flight> res;
+    for(Vertex* airport : flights.getVertexSet()){
+        for(auto flights : airport->getAdj()){
+            if(flights.getAirlines().find(airline) != flights.getAirlines().end()){
+                flight r = {airport->getIATA(), flights.getDest()->getIATA(), airline};
+                res.push_back(r);
+            }
+        }
+    }
+    return res;
+}
+
 list<string> Model::getStatistics() {
     list<string> res;
-    res.push_back("THERE ARE X FLIGHTS");
+
+    res.push_back("There are " + to_string(flights.countEdges()) + " flight routes");
     res.push_back("There are " + to_string(airports.getAirports().size()) + " airports");
     res.push_back("There are " + to_string(cities.getCities().size()) + " cities");
     res.push_back("There are " + to_string(countries.getCountries().size()) + " countries");
