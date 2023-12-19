@@ -35,18 +35,47 @@ list<flight> Model::getFlightsOnAirport(string iata) {
     return res;
 }
 
+int Model::countriesToWhichTravel(list<flight>& flights){
+    list<unsigned char> countriesknown;
+    for(auto f : flights){
+        string city = airports.getAirport(f.iata_arrival).getCity();
+        unsigned char country = cities.getCountry(city);
+        if(std::find(countriesknown.begin(), countriesknown.end(),country) != countriesknown.end()){
+            countriesknown.push_back(country);
+        }
+    }
+    return countriesknown.size();
+}
+
+
+
 list<flight> Model::getFlightsOfAirline(string airline){
     list<flight> res;
     for(Vertex* airport : flights.getVertexSet()){
-        for(auto flights : airport->getAdj()){
-            if(flights.getAirlines().find(airline) != flights.getAirlines().end()){
-                flight r = {airport->getIATA(), flights.getDest()->getIATA(), airline};
+        for(auto f : airport->getAdj()){
+            if(f.getAirlines().find(airline) != f.getAirlines().end()){
+                flight r = {airport->getIATA(), f.getDest()->getIATA(), airline};
                 res.push_back(r);
             }
         }
     }
     return res;
 }
+
+list<flight> Model::getFlightsOnCity(string city){
+    list<flight> res;
+    for(Vertex* airport : flights.getVertexSet()){
+        if(airports.getAirport(airport->getIATA()).getCity() == city){
+            for(auto& f : airport->getAdj()){
+                for(auto air : f.getAirlines()){
+                    res.push_back(flight{airport->getIATA(), f.getDest()->getIATA(),air});
+                }
+            }
+        }
+    }
+    return res;
+}
+
 
 list<string> Model::getStatistics() {
     list<string> res;

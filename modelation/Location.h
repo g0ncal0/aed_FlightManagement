@@ -46,6 +46,10 @@ public:
     }
 
     unsetcities getCities(){return cities;}
+    unsigned char getCountry(std::string city) const{
+        auto c = cities.find(parcc(city, 0));
+        return c->second;
+    }
 };
 
 class Countries {

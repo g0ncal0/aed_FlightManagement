@@ -48,15 +48,16 @@ void menu::react(int action){
             break;
 
         case 2:
-            gui::printFlightList(model.getFlightsOnAirport(gui::getString("Airport's IATA")));
+            gui::printFlightList(model.getFlightsOnAirport(gui::getString("Airport's IATA")), model.getCities() ,model.getAirports());
             break;
         case 3:
-            // TO IMPLEMENT: SOUNDS COMPLICATED
+            gui::printFlightList(model.getFlightsOnCity(gui::getString("City Name:")), model.getCities() ,model.getAirports());
             break;
         case 4:
-            gui::printFlightList(model.getFlightsOfAirline(gui::getString("Airline Code")));
+            gui::printFlightList(model.getFlightsOfAirline(gui::getString("Airline Code")), model.getCities() ,model.getAirports());
             break;
         case 5:
+            break;
 
 
     }
