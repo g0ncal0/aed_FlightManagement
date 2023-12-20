@@ -36,8 +36,8 @@ struct airlineHash
     // Hash function
     int operator() (const Airline& p) const {
         int v = 0;
-        for (char c : p.getCode()) v = 457 * v + c;
-        v %= 457;
+        for (char c : p.getCode()) v = 499 * v + c;
+        v %= 499;
         return v;
     }
 

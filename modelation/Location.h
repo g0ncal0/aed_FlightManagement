@@ -18,7 +18,10 @@ struct parccHash
     // Hash function
     int operator() (const parcc& p) const {
         // FIND HASH FUNCTION APPLICABLE
-        return 0;
+        int v = 0;
+        for (char c : p.first) v = 3271 * v + c;
+        v %= 3271;
+        return v;
     }
 
     // Equality function
