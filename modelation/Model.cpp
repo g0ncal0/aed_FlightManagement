@@ -2,6 +2,7 @@
 // Created by Filipe Correia on 16/12/2023.
 //
 
+#include <iostream>
 #include "Model.h"
 
 void Model::setFlight(Graph f) {
@@ -116,4 +117,24 @@ double Model::calculateDistance(double lat1, double lon1, double lat2, double lo
     double c = 2.0 * std::atan2(std::sqrt(a), std::sqrt(1.0 - a));
 
     return earthRadius * c;
+}
+
+int Model::maximumTrip(list<std::pair<std::string, std::string>>& res) {
+    vector<string> destinations;
+    int maxStops = 0;
+    int auxStops;
+
+    for (Vertex* v : flights.getVertexSet()) {
+        auxStops = flights.getDiameter(v, destinations);
+        if (auxStops > maxStops) {
+            maxStops = auxStops;
+            res.clear();
+            for (const string& dest : destinations) res.emplace_back(v->getIATA(), dest);
+        }
+        else if (auxStops == maxStops) {
+            for (const string& dest : destinations) res.emplace_back(v->getIATA(), dest);
+        }
+    }
+
+    return maxStops;
 }

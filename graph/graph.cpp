@@ -173,7 +173,36 @@ bool Graph::removeVertex(const string &in) {
     return false;
 }
 
+int Graph::getDiameter(Vertex* vertex, vector<string>& lastLevelVertices) {
+    int diameter = -1;
 
+    queue<Vertex*> q;
+    for (Vertex* v : vertexSet) v->setVisited(false);
+
+    vertex->setVisited(true);
+    q.push(vertex);
+
+    while (!q.empty()) {
+        diameter++;
+        int levelSize = q.size();
+        lastLevelVertices.clear();
+
+        for (int i = 0; i < levelSize; i++) {
+            Vertex* v = q.front();
+            q.pop();
+            lastLevelVertices.push_back(v->getIATA());
+            for (Edge edge : v->adj) {
+                if (!edge.dest->isVisited()) {
+                    edge.dest->setVisited(true);
+                    q.push(edge.dest);
+                }
+            }
+        }
+
+    }
+
+    return diameter;
+}
 
 int Graph::countEdges() const {
     int res = 0;

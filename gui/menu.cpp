@@ -58,7 +58,9 @@ void menu::react(int action){
             break;
         case 5:
             break;
-
-
+        case 6:
+            list<std::pair<std::string, std::string>> maximumTrips;
+            gui::printSourceDestinationAirport(model.maximumTrip(maximumTrips), maximumTrips);
+            break;
     }
 }

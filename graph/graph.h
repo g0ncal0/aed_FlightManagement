@@ -77,6 +77,7 @@ public:
     vector<string> dfs() const;
     vector<string> dfs(const string & source) const;
     vector<string> bfs(const string &source) const;
+    int getDiameter(Vertex * vertex, vector<string>& lastLevelVertices);
     int countEdges() const;
 };
 

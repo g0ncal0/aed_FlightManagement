@@ -27,7 +27,7 @@ struct parccHash
     // Equality function
 
     bool operator() (const parcc& p1, const parcc& p2) const {
-        if(p1.second == p2.second){
+        if(p1.first == p2.first){
             return true;
         }
         return false;

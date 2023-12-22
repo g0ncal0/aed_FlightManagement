@@ -44,6 +44,8 @@ public:
 
     int countriesToWhichTravel(list<flight>& flights);
     list<flight> getFlightsOnAirport(string iata);
+
+    int maximumTrip(list<std::pair<std::string, std::string>>& res);
 };
 
 
