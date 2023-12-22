@@ -43,8 +43,8 @@ struct airportHash
     int operator() (const Airport& p) const {
         // FIND HASH FUNCTION APPLICABLE
         int v = 0;
-        for (char c : p.getCode()) v = 457 * v + c;
-        v %= 457;
+        for (char c : p.getCode()) v = 3617 * v + c;
+        v %= 3617;
         return v;
     }
 

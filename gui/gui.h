@@ -7,7 +7,7 @@
 
 
 #include <iostream>
-
+#include <algorithm>
 #include <list>
 #include "../modelation/Model.h"
 
@@ -56,7 +56,9 @@ public:
         list<std::string> citiesfound;
         for(auto& f : flights){
             std::cout << f.iata_departure << "  " << f.iata_arrival << "  " << f.airline << "\n";
-            if(find(airlinesfound.begin(), airlinesfound.end(), f.airline) == airlinesfound.end()){
+            //O PROGRAMA CRASHA NESTE METODO
+
+            if(std::find(airlinesfound.begin(), airlinesfound.end(), f.airline) == airlinesfound.end()){
                 airlinesfound.push_back(f.airline);
             }
             if(std::find(destinationsfound.begin(), destinationsfound.end(), f.iata_arrival) == destinationsfound.end()){
