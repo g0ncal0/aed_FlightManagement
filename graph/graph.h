@@ -86,7 +86,7 @@ public:
     vector<string> dfs(const string & source) const;
     vector<string> bfs(const string &source) const;
     int getDiameter(Vertex * vertex, vector<string>& lastLevelVertices);
-    void dfs_articulationPoints(Vertex *v, stack<std::string> &s, unordered_set<std::string> &l, int &i);
+    void dfs_articulationPoints(Vertex *v, stack<Vertex*> &s, unordered_set<std::string> &l, int &i);
     unordered_set<std::string> articulationPoints();
     int countEdges() const;
 };

@@ -220,30 +220,30 @@ int Graph::getDiameter(Vertex* vertex, vector<string>& lastLevelVertices) {
     return diameter;
 }
 
-bool inStack(stack<std::string> s, const std::string& i) {
+bool inStack(stack<Vertex*> s, Vertex * i) {
     while (!s.empty()) {
-        std::string aux = s.top();
+        Vertex * aux = s.top();
         if (aux == i) return true;
         s.pop();
     }
     return false;
 }
 
-void Graph::dfs_articulationPoints(Vertex *v, stack<std::string> &s, unordered_set<std::string> &l, int &i) {
+void Graph::dfs_articulationPoints(Vertex *v, stack<Vertex*> &s, unordered_set<std::string> &l, int &i) {
     v->setNum(i);
     v->setLow(i);
-    s.push(v->getIATA());
+    s.push(v);
     i++;
 
     int child = 0;
-    for (Edge edge : v->getAdj()) {
+    for (const Edge& edge : v->getAdj()) {
         if (edge.getDest()->getNum() == -1) {
             child++;
             dfs_articulationPoints(edge.getDest(), s, l, i);
             v->setLow(min(v->getLow(), edge.getDest()->getLow()));
             if (edge.getDest()->getLow() >= v->getNum() && (v->getNum() != 1 || child > 1)) l.insert(v->getIATA());
         }
-        else if (inStack(s, edge.getDest()->getIATA())) v->setLow(min(v->getLow(), edge.getDest()->getNum()));
+        else if (inStack(s, edge.getDest())) v->setLow(min(v->getLow(), edge.getDest()->getNum()));
     }
     s.pop();
 }
@@ -251,7 +251,7 @@ void Graph::dfs_articulationPoints(Vertex *v, stack<std::string> &s, unordered_s
 unordered_set<std::string> Graph::articulationPoints() {
     unordered_set<std::string> res;
 
-    stack<std::string> s;
+    stack<Vertex *> s;
     int index = 1;
 
     for (Vertex * vertex : vertexSet) {
