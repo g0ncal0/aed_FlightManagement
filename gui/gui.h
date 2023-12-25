@@ -95,6 +95,11 @@ public:
 
         std::cout << "These are the maximum trips with " << stops << " stops.\n\n";
     }
+
+    static void printAirports(const unordered_set<std::string>& airports) {
+        for (const std::string& airport : airports) cout << airport << endl;
+        cout << endl;
+    }
 };
 
 

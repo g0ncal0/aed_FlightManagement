@@ -101,6 +101,7 @@ void parser::parse_flights(Graph& flights, const Airports& airports) {
         getline(iss, airline, '\r');
 
         Vertex * airport_src = flights.findVertex(source);
+        if (airport_src == NULL) continue;
         bool checkFlight = false;
         for (Edge& edge : airport_src->getAdj()) {
             if (edge.getDest()->getIATA() == destination) {
@@ -111,6 +112,7 @@ void parser::parse_flights(Graph& flights, const Airports& airports) {
         }
         if (!checkFlight) {
             Vertex * airport_dest = flights.findVertex(destination);
+            if (airport_dest == NULL) continue;
             const Airport& infoAirportSrc = airports.getAirport(source);
             const Airport& infoAirportDest = airports.getAirport(destination);
             Edge edge(airport_dest, Model::calculateDistance(infoAirportSrc.getLatitude(), infoAirportSrc.getLongitude(), infoAirportDest.getLatitude(), infoAirportDest.getLongitude()));

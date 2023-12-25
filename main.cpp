@@ -39,7 +39,6 @@ int main() {
 
 
 
-
     Model model = Model();
     model.setAirlines(airlines);
     model.setAirports(airports);
