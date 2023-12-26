@@ -36,6 +36,8 @@ void menu::prompt() {
 }
 
 void menu::react(int action){
+    list<std::pair<std::string, std::string>> maximumTrips;
+
     switch (action) {
 
         case 0:
@@ -58,7 +60,16 @@ void menu::react(int action){
             break;
         case 5:
             break;
+        case 6:
+            gui::printSourceDestinationAirport(model.maximumTrip(maximumTrips), maximumTrips);
+            break;
 
+        case 8:
+            gui::printAirports(model.essentialAirports());
+            break;
 
+        case 10:
+            model.getFlights().dfs();
+            break;
     }
 }

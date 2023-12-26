@@ -56,23 +56,26 @@ public:
         list<std::string> citiesfound;
         for(auto& f : flights){
             std::cout << f.iata_departure << "  " << f.iata_arrival << "  " << f.airline << "\n";
-            //O PROGRAMA CRASHA NESTE METODO
 
             if(std::find(airlinesfound.begin(), airlinesfound.end(), f.airline) == airlinesfound.end()){
                 airlinesfound.push_back(f.airline);
             }
+
             if(std::find(destinationsfound.begin(), destinationsfound.end(), f.iata_arrival) == destinationsfound.end()){
                 destinationsfound.push_back(f.iata_arrival);
             }
+
             if(std::find(arrivalsfound.begin(), arrivalsfound.end(), f.iata_departure) == arrivalsfound.end()){
                 arrivalsfound.push_back(f.iata_departure);
             }
+
             std::string city = airports.getAirport(f.iata_arrival).getCity();
             unsigned char country = cities.getCountry(city);
 
             if(std::find(countriesfound.begin(), countriesfound.end(), country) == countriesfound.end()){
                 countriesfound.push_back(country);
             }
+
             if(std::find(citiesfound.begin(), citiesfound.end(), city) == citiesfound.end()){
                 citiesfound.push_back(city);
             }
@@ -80,6 +83,22 @@ public:
 
         std::cout << "Total of " << flights.size() << " flights, from "<< arrivalsfound.size() << " airports, operated by " << airlinesfound.size() << " different airlines and with " << destinationsfound.size() << " different destinations.\n";
         std::cout << "These destinations span from " << countriesfound.size() << " countries and " << citiesfound.size() << " cities.\n";
+    }
+
+    static void printSourceDestinationAirport(int stops, const list<std::pair<std::string, std::string>>& airportsPairs){
+        std::cout << "\nSRC  " << "DST\n";
+        std::cout << "--------\n";
+
+        for (const std::pair<std::string, std::string>& par : airportsPairs) {
+            std::cout << par.first << "  " << par.second << std::endl;
+        }
+
+        std::cout << "These are the maximum trips with " << stops << " stops.\n\n";
+    }
+
+    static void printAirports(const unordered_set<std::string>& airports) {
+        for (const std::string& airport : airports) cout << airport << endl;
+        cout << endl;
     }
 };
 

@@ -11,6 +11,8 @@
 #include <queue>
 #include <string>
 #include <set>
+#include <stack>
+#include <unordered_set>
 
 using namespace std;
 
@@ -26,17 +28,23 @@ class Vertex {
     vector<Edge> adj;  // list of outgoing edges
     bool visited;          // auxiliary field
     bool processing;       // auxiliary field
+    int num;
+    int low;
 
     void addEdge(Vertex *dest, double w);
     bool removeEdgeTo(Vertex *d);
 public:
     Vertex(string in);
     string getIATA() const;
-    void setIATA(string in);
+    void setIATA(const std::string& in);
     bool isVisited() const;
     void setVisited(bool v);
     bool isProcessing() const;
     void setProcessing(bool p);
+    int getNum() const;
+    int setNum(int num);
+    int getLow() const;
+    int setLow(int low);
     const vector<Edge> &getAdj() const;
     vector<Edge> &getAdj();
     void setAdj(const vector<Edge> &adj);
@@ -74,9 +82,12 @@ public:
     bool addEdge(const string &sourc, const string &dest, double w);
     bool removeEdge(const string &sourc, const string &dest);
     vector<Vertex * > getVertexSet() const;
-    vector<string> dfs() const;
+    vector<string> dfs();
     vector<string> dfs(const string & source) const;
     vector<string> bfs(const string &source) const;
+    int getDiameter(Vertex * vertex, vector<string>& lastLevelVertices);
+    void dfs_articulationPoints(Vertex *v, stack<Vertex*> &s, unordered_set<std::string> &l, int &i);
+    unordered_set<std::string> articulationPoints();
     int countEdges() const;
 };
 

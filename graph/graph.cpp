@@ -4,6 +4,7 @@
 
 #include "graph.h"
 #include <string>
+#include <iostream>
 
 Vertex::Vertex(std::string in): iata(in) {}
 
@@ -22,7 +23,7 @@ string Vertex::getIATA() const {
     return iata;
 }
 
-void Vertex::setIATA(std::string in) {
+void Vertex::setIATA(const std::string& in) {
     Vertex::iata = in;
 }
 
@@ -32,6 +33,21 @@ bool Vertex::isProcessing() const {
 
 void Vertex::setProcessing(bool p) {
     Vertex::processing = p;
+}
+
+int Vertex::getNum() const{
+    return num;
+}
+
+int Vertex::setNum(int num) {
+    this->num = num;
+}
+
+int Vertex::getLow() const {
+    return low;
+}
+int Vertex::setLow(int low) {
+    this->low = low;
 }
 
 Vertex *Edge::getDest() const {
@@ -173,7 +189,74 @@ bool Graph::removeVertex(const string &in) {
     return false;
 }
 
+int Graph::getDiameter(Vertex* vertex, vector<string>& lastLevelVertices) {
+    int diameter = -1;
 
+    queue<Vertex*> q;
+    for (Vertex* v : vertexSet) v->setVisited(false);
+
+    vertex->setVisited(true);
+    q.push(vertex);
+
+    while (!q.empty()) {
+        diameter++;
+        int levelSize = q.size();
+        lastLevelVertices.clear();
+
+        for (int i = 0; i < levelSize; i++) {
+            Vertex* v = q.front();
+            q.pop();
+            lastLevelVertices.push_back(v->getIATA());
+            for (Edge edge : v->adj) {
+                if (!edge.dest->isVisited()) {
+                    edge.dest->setVisited(true);
+                    q.push(edge.dest);
+                }
+            }
+        }
+
+    }
+
+    return diameter;
+}
+
+
+void Graph::dfs_articulationPoints(Vertex *v, stack<Vertex*> &s, unordered_set<std::string> &l, int &i) {
+    v->setNum(i);
+    v->setLow(i);
+    v->setProcessing(true);
+    i++;
+
+    int child = 0;
+    for (const Edge& edge : v->getAdj()) {
+        if (edge.getDest()->getNum() == -1) {
+            child++;
+            dfs_articulationPoints(edge.getDest(), s, l, i);
+            v->setLow(min(v->getLow(), edge.getDest()->getLow()));
+            if (edge.getDest()->getLow() >= v->getNum() && (v->getNum() != 1 || child > 1)) l.insert(v->getIATA());
+        }
+        else if (v->isProcessing()) v->setLow(min(v->getLow(), edge.getDest()->getNum()));
+    }
+    v->setProcessing(false);
+}
+
+unordered_set<std::string> Graph::articulationPoints() {
+    unordered_set<std::string> res;
+
+    stack<Vertex *> s;
+    int index = 1;
+
+    for (Vertex * vertex : vertexSet) {
+        vertex->setNum(-1);
+        vertex->setLow(-1);
+    }
+
+    for (Vertex * vertex : vertexSet) {
+        if (vertex->getNum() == -1) dfs_articulationPoints(vertex, s, res, index);
+    }
+
+    return res;
+}
 
 int Graph::countEdges() const {
     int res = 0;
@@ -181,4 +264,31 @@ int Graph::countEdges() const {
         res += v->getAdj().size();
     }
     return res;
+}
+
+vector<string> Graph::dfs() {
+    vector<string> res;
+    int count = 0;
+    for (auto v : vertexSet) {
+        v->visited = false;
+        for (const Edge& edge : v->adj) addEdge(edge.getDest()->getIATA(), v->getIATA(), edge.weight);
+    }
+    for (auto v : vertexSet)
+        if (! v->visited) {
+            count++;
+            dfsVisit(v, res);
+        }
+    cout << "Numero de cc: " << count << endl;
+
+    return res;
+}
+
+void Graph::dfsVisit(Vertex *v,  vector<string> & res) const {
+    v->visited = true;
+    res.push_back(v->getIATA());
+    for (auto & e : v->adj) {
+        auto w = e.dest;
+        if ( ! w->visited)
+            dfsVisit(w, res);
+    }
 }
