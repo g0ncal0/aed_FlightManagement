@@ -75,6 +75,10 @@ void menu::react(int action){
             gui::printAirports(model.essentialAirports());
             break;
 
+        case 9:
+            gui::printVectorOfVectorOfFlights(model.bestFlight("PDL", "SFA"));
+            break;
+
         case 10:
             model.getFlights().dfs();
             break;

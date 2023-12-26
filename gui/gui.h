@@ -144,6 +144,24 @@ public:
             std::cout << i + 1  << "º > " << printing[i] << endl;
         }
     }
+
+    static void printVectorOfVectorOfFlights(const vector<vector<std::string>>& options) {
+        if (options.empty()) {
+            cout << "There is no option available" << endl;
+            return;
+        }
+
+        for (int i = 1; i <= options.size(); i++) {
+            const vector<std::string>& aux = options[i-1];
+            cout << "Option " << i << ":\n";
+
+            for (int j = 0; j < aux.size(); j++) {
+                if (j != 0) cout << " -> ";
+                cout << aux[j];
+            }
+            cout << "\n\n";
+        }
+    }
 };
 
 
