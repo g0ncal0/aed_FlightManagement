@@ -220,19 +220,11 @@ int Graph::getDiameter(Vertex* vertex, vector<string>& lastLevelVertices) {
     return diameter;
 }
 
-bool inStack(stack<Vertex*> s, Vertex * i) {
-    while (!s.empty()) {
-        Vertex * aux = s.top();
-        if (aux == i) return true;
-        s.pop();
-    }
-    return false;
-}
 
 void Graph::dfs_articulationPoints(Vertex *v, stack<Vertex*> &s, unordered_set<std::string> &l, int &i) {
     v->setNum(i);
     v->setLow(i);
-    s.push(v);
+    v->setProcessing(true);
     i++;
 
     int child = 0;
@@ -243,9 +235,9 @@ void Graph::dfs_articulationPoints(Vertex *v, stack<Vertex*> &s, unordered_set<s
             v->setLow(min(v->getLow(), edge.getDest()->getLow()));
             if (edge.getDest()->getLow() >= v->getNum() && (v->getNum() != 1 || child > 1)) l.insert(v->getIATA());
         }
-        else if (inStack(s, edge.getDest())) v->setLow(min(v->getLow(), edge.getDest()->getNum()));
+        else if (v->isProcessing()) v->setLow(min(v->getLow(), edge.getDest()->getNum()));
     }
-    s.pop();
+    v->setProcessing(false);
 }
 
 unordered_set<std::string> Graph::articulationPoints() {
