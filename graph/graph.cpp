@@ -39,14 +39,15 @@ int Vertex::getNum() const{
     return num;
 }
 
-int Vertex::setNum(int num) {
+void Vertex::setNum(int num) {
     this->num = num;
 }
 
 int Vertex::getLow() const {
     return low;
 }
-int Vertex::setLow(int low) {
+
+void Vertex::setLow(int low) {
     this->low = low;
 }
 

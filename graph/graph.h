@@ -42,9 +42,9 @@ public:
     bool isProcessing() const;
     void setProcessing(bool p);
     int getNum() const;
-    int setNum(int num);
+    void setNum(int num);
     int getLow() const;
-    int setLow(int low);
+    void setLow(int low);
     const vector<Edge> &getAdj() const;
     vector<Edge> &getAdj();
     void setAdj(const vector<Edge> &adj);
