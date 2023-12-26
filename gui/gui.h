@@ -34,10 +34,17 @@ public:
     }
 
     static int getInt(const char* s){
+        while(true){
         std::cout << s << ": ";
-        int res;
+        std::string res;
         std::cin >> res;
-        return res;
+        try{
+            int r = stoi(res);
+            return r;
+        }catch(invalid_argument){
+            std::cout << "Invalid number\n";
+        }
+        }
     }
     static std::string getString(const char* s){
         std::cout << s << ": ";
@@ -85,6 +92,22 @@ public:
         std::cout << "These destinations span from " << countriesfound.size() << " countries and " << citiesfound.size() << " cities.\n";
     }
 
+    static std::string getAirport(const Airports& airports){
+        std::string given;
+
+        while(true){
+            std::cout << "Airport: ";
+            std:: cin >> given;
+            if(airports.airportExists(given)){
+                break;
+            }
+            std::cout << "NOT VALID\n";
+        }
+
+        return given;
+
+    }
+
     static void printSourceDestinationAirport(int stops, const list<std::pair<std::string, std::string>>& airportsPairs){
         std::cout << "\nSRC  " << "DST\n";
         std::cout << "--------\n";
@@ -98,7 +121,14 @@ public:
 
     static void printAirports(const unordered_set<std::string>& airports) {
         for (const std::string& airport : airports) cout << airport << endl;
+        cout << "Results in " << airports.size() << " airports";
         cout << endl;
+    }
+
+    static void printWithOrder(const vector<std::string>& printing){
+        for(int i = 0; i < printing.size(); i++){
+            std::cout << i + 1  << "º > " << printing[i] << endl;
+        }
     }
 };
 

@@ -143,3 +143,32 @@ unordered_set<std::string> Model::essentialAirports() {
     parser::parse_flights(flights, airports);
     return essentialAirports;
 }
+
+
+vector<std::string> Model::highestAirTrafficCapacity(int k){
+    flights.setDefaults();
+    for(Vertex* v : flights.getVertexSet()){
+        int outflights = 0;
+        for(auto &out : v->getAdj()){
+            outflights += out.getAirlines().size();
+        }
+        v->setNum(v->getNum() + outflights);
+        for(Edge e : v->getAdj()){
+
+            e.getDest()->setNum(e.getDest()->getNum() + e.getAirlines().size());
+        }
+    }
+    vector<std::string> res;
+    for(int i = 0; i < k; i++){
+        int max = 0;
+        std::string cmax;
+        for(Vertex* v : flights.getVertexSet()){
+            if(v->getNum() > max && find(res.begin(), res.end(), v->getIATA()) == res.end()){
+                cmax = v->getIATA();
+                max = v->getNum();
+            }
+        }
+        res.push_back(cmax);
+    }
+    return res;
+}

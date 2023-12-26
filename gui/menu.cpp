@@ -15,7 +15,9 @@ menu::menu(Model& model) {
         if(res == -1){
             break;
         }
-        react(res);
+        if(res >= 0 && res <= 10){
+            react(res);
+        }
     }
 }
 
@@ -50,7 +52,7 @@ void menu::react(int action){
             break;
 
         case 2:
-            gui::printFlightList(model.getFlightsOnAirport(gui::getString("Airport's IATA")), model.getCities() ,model.getAirports());
+            gui::printFlightList(model.getFlightsOnAirport(gui::getAirport(model.getAirports())), model.getCities() ,model.getAirports());
             break;
         case 3:
             gui::printFlightList(model.getFlightsOnCity(gui::getString("City Name:")), model.getCities() ,model.getAirports());
@@ -59,9 +61,15 @@ void menu::react(int action){
             gui::printFlightList(model.getFlightsOfAirline(gui::getString("Airline Code")), model.getCities() ,model.getAirports());
             break;
         case 5:
+            gui::printAirports(model.getFlights().bfsmaxXstops(gui::getAirport(model.getAirports()), gui::getInt("How many stops?")));
             break;
         case 6:
             gui::printSourceDestinationAirport(model.maximumTrip(maximumTrips), maximumTrips);
+            break;
+        case 7:
+            gui::print("Please note that to calculate the highest air traffic capacity airport, we counted all arrivals and departures from each company.");
+            gui::printWithOrder(model.highestAirTrafficCapacity(gui::getInt("How many")));
+
             break;
 
         case 8:

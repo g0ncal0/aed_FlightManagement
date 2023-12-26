@@ -48,6 +48,8 @@ public:
 
     int maximumTrip(list<std::pair<std::string, std::string>>& res);
     unordered_set<std::string> essentialAirports();
+
+    vector<string> highestAirTrafficCapacity(int k);
 };
 
 

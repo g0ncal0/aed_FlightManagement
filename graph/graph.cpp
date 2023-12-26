@@ -292,3 +292,36 @@ void Graph::dfsVisit(Vertex *v,  vector<string> & res) const {
             dfsVisit(w, res);
     }
 }
+
+void Graph::setDefaults(){
+    for(Vertex* v : vertexSet){
+        v->setLow(-1);
+        v->setNum(-1);
+        v->setVisited(false);
+        v->setProcessing(false);
+    }
+}
+
+
+unordered_set<string> Graph::bfsmaxXstops(std::string airport, int n){
+    setDefaults();
+    unordered_set<std::string> res;
+    auto a = findVertex(airport);
+    queue<Vertex*> qv;
+    qv.push(a);
+    a->setNum(0);
+    a->setVisited(true);
+    while(!qv.empty()){
+        auto u = qv.front();
+        qv.pop();
+        for(auto edge : u->getAdj()){
+            if(!edge.getDest()->isVisited() && u->getNum() < n){
+                qv.push(edge.getDest());
+                edge.getDest()->setNum(u->getNum()+1);
+                edge.getDest()->setVisited(true);
+                res.insert(edge.getDest()->getIATA());
+            }
+        }
+    }
+    return res;
+}

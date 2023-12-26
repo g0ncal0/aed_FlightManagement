@@ -89,6 +89,10 @@ public:
     void dfs_articulationPoints(Vertex *v, stack<Vertex*> &s, unordered_set<std::string> &l, int &i);
     unordered_set<std::string> articulationPoints();
     int countEdges() const;
+
+    unordered_set<std::string> bfsmaxXstops(string airport, int n);
+
+    void setDefaults();
 };
 
 

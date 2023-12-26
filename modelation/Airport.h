@@ -82,6 +82,14 @@ public:
         Airport airport_key(code, "", "", 0, 0, 0);
         return *airports.find(airport_key);
     }
+    const bool airportExists(const std::string& code) const{
+        Airport airport_key(code, "", "", 0, 0, 0);
+        if(airports.find(airport_key) != airports.end() ){
+                return true;
+            }
+            return false;
+
+    }
 
 };
 
