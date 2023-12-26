@@ -76,7 +76,6 @@ public:
             if(std::find(citiesfound.begin(), citiesfound.end(), city) == citiesfound.end()){
                 citiesfound.push_back(city);
             }
-
         }
 
         std::cout << "Total of " << flights.size() << " flights, from "<< arrivalsfound.size() << " airports, operated by " << airlinesfound.size() << " different airlines and with " << destinationsfound.size() << " different destinations.\n";

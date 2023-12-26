@@ -30,7 +30,6 @@ list<flight> Model::getFlightsOnAirport(string iata) {
             flight f = {iata,d.getDest()->getIATA(), airline};
             res.push_back(f);
         }
-
     }
     return res;
 }
