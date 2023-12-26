@@ -9,6 +9,7 @@
 #include <algorithm>
 #include "Airport.h"
 #include "../graph/graph.h"
+#include "../parser/parser.h"
 #include "Location.h"
 
 struct flight{
@@ -46,6 +47,7 @@ public:
     list<flight> getFlightsOnAirport(string iata);
 
     int maximumTrip(list<std::pair<std::string, std::string>>& res);
+    unordered_set<std::string> essentialAirports();
 };
 
 

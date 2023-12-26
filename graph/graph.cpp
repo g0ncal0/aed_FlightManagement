@@ -279,7 +279,7 @@ vector<string> Graph::dfs() {
     int count = 0;
     for (auto v : vertexSet) {
         v->visited = false;
-        //for (const Edge& edge : v->adj) addEdge(edge.getDest()->getIATA(), v->getIATA(), edge.weight);
+        for (const Edge& edge : v->adj) addEdge(edge.getDest()->getIATA(), v->getIATA(), edge.weight);
     }
     for (auto v : vertexSet)
         if (! v->visited) {
@@ -287,6 +287,7 @@ vector<string> Graph::dfs() {
             dfsVisit(v, res);
         }
     cout << "Numero de cc: " << count << endl;
+
     return res;
 }
 

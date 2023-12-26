@@ -65,7 +65,7 @@ void menu::react(int action){
             break;
 
         case 8:
-            gui::printAirports(model.getFlights().articulationPoints());
+            gui::printAirports(model.essentialAirports());
             break;
 
         case 10:
