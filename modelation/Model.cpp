@@ -121,7 +121,7 @@ double Model::calculateDistance(double lat1, double lon1, double lat2, double lo
 /**
  * Function to discover the maximum number of stops between two airports and get this trips
  * @param res where all the possible maximum trips will be stored
- * @return the maximum number of stops
+ * @return the maximum number of stopsS
  */
 int Model::maximumTrip(list<std::pair<std::string, std::string>>& res) {
     vector<string> destinations;
