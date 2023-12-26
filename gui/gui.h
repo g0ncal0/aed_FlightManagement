@@ -92,6 +92,20 @@ public:
         std::cout << "These destinations span from " << countriesfound.size() << " countries and " << citiesfound.size() << " cities.\n";
     }
 
+
+    static vector<std::string> getAirportsUserChoice(const Airports& airports){
+        print("How do you want to refer to the airport(s)?");
+        printWithOrder({"IATA", "City Name", "Geographic Coordinates"});
+
+        int g;
+        std::cin >> g;
+        vector<string> r;
+        r.push_back("LIN");
+        r.push_back("CGD");
+        return r;
+    }
+
+
     static std::string getAirport(const Airports& airports){
         std::string given;
 

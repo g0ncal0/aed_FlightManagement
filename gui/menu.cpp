@@ -69,7 +69,6 @@ void menu::react(int action){
         case 7:
             gui::print("Please note that to calculate the highest air traffic capacity airport, we counted all arrivals and departures from each company.");
             gui::printWithOrder(model.highestAirTrafficCapacity(gui::getInt("How many")));
-
             break;
 
         case 8:
