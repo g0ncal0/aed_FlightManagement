@@ -115,7 +115,7 @@ void parser::parse_flights(Graph& flights, const Airports& airports) {
             if (airport_dest == NULL) continue;
             const Airport& infoAirportSrc = airports.getAirport(source);
             const Airport& infoAirportDest = airports.getAirport(destination);
-            Edge edge(airport_dest, Model::calculateDistance(infoAirportSrc.getLatitude(), infoAirportSrc.getLongitude(), infoAirportDest.getLatitude(), infoAirportDest.getLongitude()));
+            Edge edge(airport_dest, calculation::calculateDistance(infoAirportSrc.getLatitude(), infoAirportSrc.getLongitude(), infoAirportDest.getLatitude(), infoAirportDest.getLongitude()));
             edge.addAirline(airline);
             airport_src->addAdj(edge);
         }

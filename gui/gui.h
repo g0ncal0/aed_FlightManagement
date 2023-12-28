@@ -46,6 +46,12 @@ public:
         }
         }
     }
+    static float getFloat(const char* s){
+        std::cout << s << ": ";
+        float res;
+        std::cin >>res;
+        return res;
+    }
     static std::string getString(const char* s){
         std::cout << s << ": ";
         std::string res;
@@ -95,16 +101,25 @@ public:
 
     static vector<std::string> getAirportsUserChoice(const Airports& airports){
         print("How do you want to refer to the airport(s)?");
-        printWithOrder({"IATA", "City Name", "Geographic Coordinates"});
+        printlist({"IATA", "City Name", "Geographic Coordinates"});
 
         int g;
         std::cin >> g;
+        if(g == 0){
+            return {getAirport(airports)};
+        }
+        if(g == 1){
+            std::string city = getString("In which city");
+            return airports.getAirportsInCity(city);
+        }
+        if(g == 2){
+            float lat = getFloat("Latitude");
+            float lon = getFloat("Longitude");
+            return airports.getAirportsOnCoordinates(lat, lon);
+        }
         vector<string> r;
-        r.push_back("LIN");
-        r.push_back("CGD");
         return r;
     }
-
 
     static std::string getAirport(const Airports& airports){
         std::string given;

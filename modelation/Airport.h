@@ -9,7 +9,7 @@
 #include <string>
 #include <unordered_set>
 #include <list>
-#include "Airline.h"
+#include "Calculations.h"
 
 class Airport {
 private:
@@ -68,6 +68,32 @@ public:
 
     const tabHAirport& getAirports() {
         return airports;
+    }
+
+    std::vector<std::string> getAirportsInCity(std::string c) const{
+        std::vector<std::string> res;
+        for(auto air : airports){
+            if(air.getCity() == c){
+                res.push_back(air.getCode());
+            }
+        }
+        return res;
+    }
+
+    std::vector<std::string> getAirportsOnCoordinates(float lat, float lon) const{
+        int min_distance = 100000;
+        std::vector<std::string> res;
+        for(auto airp : airports){
+            int d = calculation::calculateDistance(airp.getLatitude(), airp.getLongitude(), lat, lon);
+            if(d < min_distance){
+                min_distance = d;
+                res.clear();
+                res.push_back(airp.getCode());
+            }else if(d == min_distance){
+                res.push_back(airp.getCode());
+            }
+        }
+        return res;
     }
 
 

@@ -76,7 +76,7 @@ void menu::react(int action){
             break;
 
         case 10:
-            model.getFlights().dfs();
+            gui::printWithOrder(gui::getAirportsUserChoice(model.getAirports()));
             break;
     }
 }
