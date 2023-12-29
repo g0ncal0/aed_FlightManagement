@@ -11,6 +11,8 @@
 #include <list>
 #include "../modelation/Model.h"
 
+using namespace std;
+
 class gui {
 
 public:

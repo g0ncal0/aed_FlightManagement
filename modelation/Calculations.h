@@ -5,6 +5,8 @@
 #ifndef AVIOES_CALCULATIONS_H
 #define AVIOES_CALCULATIONS_H
 
+#include <cmath>
+
 class calculation{
 
 public:

@@ -211,3 +211,17 @@ vector<vector<std::string>> Model::bestFlight(const std::string& src, const std:
 
     return res;
 }
+
+vector<vector<std::string>> Model::bestFlightOptions(const vector<std::string>& sources, const vector<std::string>& destinations) {
+    vector<vector<std::string>> res;
+
+    vector<vector<std::string>> aux;
+    for (const std::string& source : sources) {
+        for (const std::string& destination : destinations) {
+            aux = bestFlight(source, destination);
+            res.insert(res.end(), aux.begin(), aux.end());
+        }
+    }
+
+    return res;
+}

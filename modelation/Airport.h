@@ -9,6 +9,7 @@
 #include <string>
 #include <unordered_set>
 #include <list>
+#include <vector>
 #include "Calculations.h"
 
 class Airport {

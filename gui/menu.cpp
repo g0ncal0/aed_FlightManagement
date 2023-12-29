@@ -39,6 +39,8 @@ void menu::prompt() {
 
 void menu::react(int action){
     list<std::pair<std::string, std::string>> maximumTrips;
+    vector<std::string> sources;
+    vector<std::string> destinations;
 
     switch (action) {
 
@@ -76,7 +78,13 @@ void menu::react(int action){
             break;
 
         case 9:
-            gui::printVectorOfVectorOfFlights(model.bestFlight("PDL", "SFA"));
+            cout << "Source airport(s):" << endl;
+            sources = gui::getAirportsUserChoice(model.getAirports());
+
+            cout << "Destination airport(s):" << endl;
+            destinations = gui::getAirportsUserChoice(model.getAirports());
+
+            gui::printVectorOfVectorOfFlights(model.bestFlightOptions(sources, destinations));
             break;
 
         case 10:
