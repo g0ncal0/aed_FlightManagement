@@ -139,6 +139,22 @@ public:
 
     }
 
+    static vector<std::string> getAirlinesToAvoid() {
+        vector<std::string> res;
+        std::string answer;
+
+        cout << "Do you want to avoid any airline? (y/n)  ";
+        cin >> answer;
+
+        while (answer != "n") {
+            cout << "Write one airline code or 'n' if you are done. \n";
+            cin >> answer;
+            if (answer != "n") res.push_back(answer);
+        }
+
+        return res;
+    }
+
     static void printSourceDestinationAirport(int stops, const list<std::pair<std::string, std::string>>& airportsPairs){
         std::cout << "\nSRC  " << "DST\n";
         std::cout << "--------\n";
@@ -175,6 +191,31 @@ public:
             for (int j = 0; j < aux.size(); j++) {
                 if (j != 0) cout << " -> ";
                 cout << aux[j];
+            }
+            cout << "\n\n";
+        }
+    }
+
+    static void printVectorOfVectorOfFlightsWithAirlines(const vector<vector<pair<std::string, vector<std::string>>>>& options) {
+        if (options.empty()) {
+            cout << "There is no option available" << endl;
+            return;
+        }
+
+        for (int i = 1; i <= options.size(); i++) {
+            const vector<pair<std::string, vector<std::string>>>& aux = options[i-1];
+
+            cout << "Option " << i << ":\n";
+
+            for (int j = 0; j < aux.size(); j++) {
+                vector<std::string> airlines = aux[j].second;
+
+                if (j != 0) {
+                    cout << " -> [" << airlines[0];
+                    for (int k = 1; k < airlines.size(); k++) cout << "," << airlines[k];
+                    cout << "] -> ";
+                }
+                cout << aux[j].first;
             }
             cout << "\n\n";
         }

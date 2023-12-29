@@ -64,7 +64,7 @@ public:
     void setDest(Vertex *dest);
     double getWeight() const;
     void setWeight(double weight);
-    set<string> getAirlines();
+    set<string> getAirlines() const;
     void addAirline(std::string airline);
     friend class Graph;
     friend class Vertex;

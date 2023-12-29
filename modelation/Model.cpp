@@ -212,6 +212,116 @@ vector<vector<std::string>> Model::bestFlight(const std::string& src, const std:
     return res;
 }
 
+vector<vector<pair<std::string, vector<std::string>>>> Model::bestFlightWithAirlinesToAvoid(const std::string& src, const std::string& dest, const vector<std::string>& airlinesToAvoid) {
+    vector<vector<pair<std::string, vector<std::string>>>> res;
+
+    for (Vertex * vertex : flights.getVertexSet()) {
+        vertex->setVisited(false);
+        vertex->setProcessing(false);
+    }
+
+    Vertex * vertex_src = flights.findVertex(src);
+    vertex_src->setVisited(true);
+
+    queue<pair<Vertex *, vector<pair<std::string, vector<std::string>>>>> q;
+    q.push({vertex_src, {{vertex_src->getIATA(), {}}}});
+
+    bool check_done = false;
+
+    while (!q.empty() && !check_done) {
+        int level_size = (int) q.size();
+
+        vector<Vertex *> processing;
+
+        for (int i = 0; i < level_size; i++) {
+            pair<Vertex *, vector<pair<std::string, vector<std::string>>>> visiting = q.front();
+            q.pop();
+            Vertex * vertex = visiting.first;
+
+            for (const Edge& edge : vertex->getAdj()) {
+                vector<std::string> allowedAirlines;
+
+                if (edge.getDest()->getIATA() == dest) {
+
+                    for (const std::string& airline : edge.getAirlines()) {
+                        bool check = true;
+                        for (const std::string& avoid : airlinesToAvoid) {
+                            if (airline == avoid) {
+                                check = false;
+                                break;
+                            }
+                        }
+
+                        if (check) allowedAirlines.push_back(airline);
+                    }
+
+                    if (!allowedAirlines.empty()) {
+                        check_done = true;
+                        visiting.second.emplace_back(dest, allowedAirlines);
+                        res.push_back(visiting.second);
+                    }
+                }
+
+                else if (!edge.getDest()->isVisited()) {
+                    vector<pair<std::string, vector<std::string>>> path;
+
+                    for (const auto& pair : visiting.second) path.push_back(pair);
+
+                    for (const std::string& airline : edge.getAirlines()) {
+
+                        bool check = true;
+                        for (const std::string& avoid : airlinesToAvoid) {
+                            if (airline == avoid) {
+                                check = false;
+                                break;
+                            }
+                        }
+
+                        if (check) allowedAirlines.push_back(airline);
+                    }
+
+                    path.emplace_back(edge.getDest()->getIATA(), allowedAirlines);
+
+                    if (!allowedAirlines.empty()) {
+                        edge.getDest()->setVisited(true);
+                        edge.getDest()->setProcessing(true);
+                        processing.push_back(edge.getDest());
+                        q.emplace(edge.getDest(), path);
+                    }
+                }
+
+                else if (edge.getDest()->isProcessing()) {
+                    vector<pair<std::string, vector<std::string>>> path;
+
+                    for (const auto& pair : visiting.second) path.push_back(pair);
+
+                    for (const std::string& airline : edge.getAirlines()) {
+                        bool check = true;
+                        for (const std::string& avoid : airlinesToAvoid) {
+                            if (airline == avoid) {
+                                check = false;
+                                break;
+                            }
+                        }
+
+                        if (check) allowedAirlines.push_back(airline);
+                    }
+
+                    path.emplace_back(edge.getDest()->getIATA(), allowedAirlines);
+
+                    if (!allowedAirlines.empty()) {
+                        q.emplace(edge.getDest(), path);
+                    }
+                }
+            }
+        }
+
+        for (Vertex * v : processing) v->setProcessing(false);
+    }
+
+    return res;
+}
+
 vector<vector<std::string>> Model::bestFlightOptions(const vector<std::string>& sources, const vector<std::string>& destinations) {
     vector<vector<std::string>> res;
 
@@ -219,6 +329,20 @@ vector<vector<std::string>> Model::bestFlightOptions(const vector<std::string>& 
     for (const std::string& source : sources) {
         for (const std::string& destination : destinations) {
             aux = bestFlight(source, destination);
+            res.insert(res.end(), aux.begin(), aux.end());
+        }
+    }
+
+    return res;
+}
+
+vector<vector<pair<std::string, vector<std::string>>>> Model::bestFlightOptionsWithAirlinesToAvoid(const vector<std::string>& sources, const vector<std::string>& destinations, const vector<std::string>& airlinesToAvoid) {
+    vector<vector<pair<std::string, vector<std::string>>>> res;
+
+    vector<vector<pair<std::string, vector<std::string>>>> aux;
+    for (const std::string& source : sources) {
+        for (const std::string& destination : destinations) {
+            aux = bestFlightWithAirlinesToAvoid(source, destination, airlinesToAvoid);
             res.insert(res.end(), aux.begin(), aux.end());
         }
     }

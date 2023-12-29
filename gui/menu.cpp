@@ -41,6 +41,7 @@ void menu::react(int action){
     list<std::pair<std::string, std::string>> maximumTrips;
     vector<std::string> sources;
     vector<std::string> destinations;
+    vector<std::string> airlinesToAvoid;
 
     switch (action) {
 
@@ -84,7 +85,11 @@ void menu::react(int action){
             cout << "Destination airport(s):" << endl;
             destinations = gui::getAirportsUserChoice(model.getAirports());
 
-            gui::printVectorOfVectorOfFlights(model.bestFlightOptions(sources, destinations));
+            airlinesToAvoid = gui::getAirlinesToAvoid();
+
+            if (airlinesToAvoid.empty()) gui::printVectorOfVectorOfFlights(model.bestFlightOptions(sources, destinations));
+            else gui::printVectorOfVectorOfFlightsWithAirlines(model.bestFlightOptionsWithAirlinesToAvoid(sources, destinations, airlinesToAvoid));
+
             break;
 
         case 10:

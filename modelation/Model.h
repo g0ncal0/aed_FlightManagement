@@ -48,7 +48,9 @@ public:
     int maximumTrip(list<std::pair<std::string, std::string>>& res);
     unordered_set<std::string> essentialAirports();
     vector<vector<std::string>> bestFlight(const std::string& src, const std::string& dest);
+    vector<vector<pair<std::string, vector<std::string>>>> bestFlightWithAirlinesToAvoid(const std::string& src, const std::string& dest, const vector<std::string>& airlinesToAvoid);
     vector<vector<std::string>> bestFlightOptions(const vector<std::string>& sources, const vector<std::string>& destinations);
+    vector<vector<pair<std::string, vector<std::string>>>> bestFlightOptionsWithAirlinesToAvoid(const vector<std::string>& sources, const vector<std::string>& destinations, const vector<std::string>& airlinesToAvoid);
 
     vector<string> highestAirTrafficCapacity(int k);
 };

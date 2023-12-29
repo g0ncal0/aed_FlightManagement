@@ -67,7 +67,7 @@ void Edge::setWeight(double weight) {
     Edge::weight = weight;
 }
 
-set<string> Edge::getAirlines() {
+set<string> Edge::getAirlines() const {
     return airlines;
 }
 
