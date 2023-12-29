@@ -36,11 +36,11 @@ public:
     Airlines getAirlines(){return airlines;}
     Airports getAirports(){return airports;}
     Cities getCities(){return cities;}
-
+    Countries getCountries(){return countries;}
     list<string> getStatistics();
     list<flight> getFlightsOfAirline(string airline);
 
-    list<flight> getFlightsOnCity(string city);
+    list<flight> getFlightsOnCity(string city, const Cities& cities);
 
     int countriesToWhichTravel(list<flight>& flights);
     list<flight> getFlightsOnAirport(string iata);

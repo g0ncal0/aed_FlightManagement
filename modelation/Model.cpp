@@ -62,10 +62,12 @@ list<flight> Model::getFlightsOfAirline(string airline){
     return res;
 }
 
-list<flight> Model::getFlightsOnCity(string city){
+list<flight> Model::getFlightsOnCity(string city, const Cities& cities){
     list<flight> res;
+    unsigned char country = cities.getCountry(city);
+
     for(Vertex* airport : flights.getVertexSet()){
-        if(airports.getAirport(airport->getIATA()).getCity() == city){
+        if(airports.getAirport(airport->getIATA()).getCity() == city && airports.getAirport(airport->getIATA()).getCountry() == country){
             for(auto& f : airport->getAdj()){
                 for(auto air : f.getAirlines()){
                     res.push_back(flight{airport->getIATA(), f.getDest()->getIATA(),air});
@@ -156,10 +158,8 @@ vector<std::string> Model::highestAirTrafficCapacity(int k){
 vector<vector<std::string>> Model::bestFlight(const std::string& src, const std::string& dest) {
     vector<vector<std::string>> res;
 
-    for (Vertex * vertex : flights.getVertexSet()) {
-        vertex->setVisited(false);
-        vertex->setProcessing(false);
-    }
+
+    flights.setDefaults();
 
     Vertex * vertex_src = flights.findVertex(src);
     vertex_src->setVisited(true);
@@ -206,7 +206,7 @@ vector<vector<std::string>> Model::bestFlight(const std::string& src, const std:
             }
         }
 
-        for (Vertex * v : processing) v->setProcessing(false);
+        flights.setDefaults();
     }
 
     return res;
@@ -215,10 +215,7 @@ vector<vector<std::string>> Model::bestFlight(const std::string& src, const std:
 vector<vector<pair<std::string, vector<std::string>>>> Model::bestFlightWithAirlinesToAvoid(const std::string& src, const std::string& dest, const vector<std::string>& airlinesToAvoid) {
     vector<vector<pair<std::string, vector<std::string>>>> res;
 
-    for (Vertex * vertex : flights.getVertexSet()) {
-        vertex->setVisited(false);
-        vertex->setProcessing(false);
-    }
+    flights.setDefaults();
 
     Vertex * vertex_src = flights.findVertex(src);
     vertex_src->setVisited(true);
@@ -316,7 +313,7 @@ vector<vector<pair<std::string, vector<std::string>>>> Model::bestFlightWithAirl
             }
         }
 
-        for (Vertex * v : processing) v->setProcessing(false);
+        flights.setDefaults();
     }
 
     return res;

@@ -21,6 +21,9 @@ public:
     menu(Model& model);
 
 
+    void preparebestflight();
+
+    void prepareMaxTrip();
 };
 
 

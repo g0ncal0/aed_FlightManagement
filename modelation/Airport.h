@@ -11,6 +11,8 @@
 #include <list>
 #include <vector>
 #include "Calculations.h"
+#include "Location.h"
+
 
 class Airport {
 private:
@@ -34,6 +36,7 @@ public:
     std::string getCode() const {return code;}
     std::string getName() const {return name;}
     std::string getCity() const {return city;}
+    unsigned char getCountry() const {return country;}
     float getLatitude() const {return latitude;}
     float getLongitude() const {return longitude;}
 };
@@ -67,13 +70,25 @@ public:
         airports.insert(Airport(code, name, city, country, latitude, longitude));
     }
 
-    const tabHAirport& getAirports() {
+    const tabHAirport& getAirports() const{
         return airports;
     }
 
 
-    std::vector<std::string> getAirportsInCity(std::string c) const{
+
+    std::vector<std::string> getAirportsInCity(std::string c, unsigned char country) const{
         std::vector<std::string> res;
+
+
+
+        std::vector<unsigned char> countries;
+        for(auto air : airports){
+            if(air.getCity() == c){
+                res.push_back(air.getCode());
+                countries.push_back(air.getCountry());
+            }
+        }
+
 
         for(auto air : airports){
             if(air.getCity() == c){

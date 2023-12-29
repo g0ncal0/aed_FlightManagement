@@ -48,6 +48,42 @@ public:
         cities.insert(parcc(name, country));
     }
 
+    bool doesCityExist(std::string cityname) const{
+        auto it = cities.find({cityname, 0});
+        if(it != cities.end()){
+            return true;
+        }
+        return false;
+    }
+
+    unsigned char getCountry(std::string city){
+        std::vector<unsigned char> country;
+        for(auto c : cities){
+            if(c.first == city){
+                country.push_back(c.second);
+            }
+        }
+        if(country.empty()){
+            return 0;
+        }
+        if(country.size() == 1){
+            return country[0];
+        }else{
+            std::cout << "There are " << country.size() << " cities with the same name.";
+            for(auto c : country){
+                std::cout << "Country code: " << c << std::endl;
+            }
+            std::cout << "Which country do you choose?";
+            unsigned char given;
+            std::cin >> given;
+            if(given >= 0 && given < country.size() ){
+                return given;
+            }
+            return country[0];
+        }
+    }
+
+
     unsetcities getCities(){return cities;}
     unsigned char getCountry(std::string city) const{
         auto c = cities.find(parcc(city, 0));

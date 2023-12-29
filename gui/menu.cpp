@@ -15,7 +15,7 @@ menu::menu(Model& model) {
         if(res == -1){
             break;
         }
-        if(res >= 0 && res <= 10){
+        if(res >= 0 && res <= 12){
             react(res);
         }
     }
@@ -33,15 +33,45 @@ void menu::prompt() {
                     "The greatest air traffic capacity airport",
                     "Essential Airports",
                     "Best Flight",
+                    "Countries Listing",
+                    "Airlines Listing",
+                    "Airports Listing"
                     });
 
 }
 
-void menu::react(int action){
-    list<std::pair<std::string, std::string>> maximumTrips;
+void menu::preparebestflight(){
     vector<std::string> sources;
     vector<std::string> destinations;
     vector<std::string> airlinesToAvoid;
+
+    gui::print("Source airport(s):");
+
+    sources = gui::getAirportsUserChoice(model.getAirports(), model.getCities());
+
+    gui::print("Destination airport(s):");
+
+    destinations = gui::getAirportsUserChoice(model.getAirports(), model.getCities());
+
+    airlinesToAvoid = gui::getAirlinesToAvoid();
+
+    if (airlinesToAvoid.empty()) gui::printVectorOfVectorOfFlights(model.bestFlightOptions(sources, destinations));
+    else gui::printVectorOfVectorOfFlightsWithAirlines(model.bestFlightOptionsWithAirlinesToAvoid(sources, destinations, airlinesToAvoid));
+
+}
+
+void menu::prepareMaxTrip(){
+    list<std::pair<std::string, std::string>> maximumTrips;
+    gui::printSourceDestinationAirport(model.maximumTrip(maximumTrips), maximumTrips);
+
+}
+
+/**
+ * The function that calls all other action methods of the model
+ * @param action which action to make
+ */
+void menu::react(int action){
+
 
     switch (action) {
 
@@ -58,7 +88,7 @@ void menu::react(int action){
             gui::printFlightList(model.getFlightsOnAirport(gui::getAirport(model.getAirports())), model.getCities() ,model.getAirports());
             break;
         case 3:
-            gui::printFlightList(model.getFlightsOnCity(gui::getString("City Name:")), model.getCities() ,model.getAirports());
+            gui::printFlightList(model.getFlightsOnCity(gui::getCity(model.getCities()), model.getCities()), model.getCities() ,model.getAirports());
             break;
         case 4:
             gui::printFlightList(model.getFlightsOfAirline(gui::getString("Airline Code")), model.getCities() ,model.getAirports());
@@ -67,7 +97,7 @@ void menu::react(int action){
             gui::printAirports(model.getFlights().bfsmaxXstops(gui::getAirport(model.getAirports()), gui::getInt("How many stops?")));
             break;
         case 6:
-            gui::printSourceDestinationAirport(model.maximumTrip(maximumTrips), maximumTrips);
+            prepareMaxTrip();
             break;
         case 7:
             gui::print("Please note that to calculate the highest air traffic capacity airport, we counted all arrivals and departures from each company.");
@@ -77,23 +107,19 @@ void menu::react(int action){
         case 8:
             gui::printAirports(model.essentialAirports());
             break;
-
         case 9:
-            cout << "Source airport(s):" << endl;
-            sources = gui::getAirportsUserChoice(model.getAirports());
-
-            cout << "Destination airport(s):" << endl;
-            destinations = gui::getAirportsUserChoice(model.getAirports());
-
-            airlinesToAvoid = gui::getAirlinesToAvoid();
-
-            if (airlinesToAvoid.empty()) gui::printVectorOfVectorOfFlights(model.bestFlightOptions(sources, destinations));
-            else gui::printVectorOfVectorOfFlightsWithAirlines(model.bestFlightOptionsWithAirlinesToAvoid(sources, destinations, airlinesToAvoid));
-
+            preparebestflight();
             break;
-
         case 10:
-            gui::printWithOrder(gui::getAirportsUserChoice(model.getAirports()));
+            gui::print("CODE : NAME");
+            gui::printVector(model.getCountries().getCountries());
             break;
+        case 11:
+            gui::printAirlines(model.getAirlines());
+            break;
+        case 12:
+            gui::printAirportsModel(model.getAirports());
+            break;
+
     }
 }

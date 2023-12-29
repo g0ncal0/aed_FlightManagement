@@ -28,6 +28,7 @@ public:
     std::string getCode() const{return code;}
     std::string getName() const{return name;}
     std::string getCallSign() const{return callsign;}
+    unsigned char getCountry() const{return country;}
 
 };
 
@@ -57,7 +58,7 @@ public:
     void addAirline(const std::string& code, const std::string& name, const std::string& callsign, unsigned char country){
         airlines.insert(Airline(code, name, callsign, country));
     }
-    const tabHAirline& getAirlines() {
+    const tabHAirline& getAirlines() const {
         return airlines;
     }
 

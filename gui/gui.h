@@ -35,6 +35,22 @@ public:
         std::cout << '\n';
     }
 
+    /**
+     *
+     * @param cities
+     * @return Returns a string that is always a name of a city based on user input
+     */
+    static std::string getCity(const Cities& cities){
+        std::cout << "Insert City Name: ";
+        std::string city;
+        std::cin >> city;
+        while(!cities.doesCityExist(city)){
+            std::cout << "City does not exist. Insert city name: ";
+            std::cin >> city;
+        }
+        return city;
+    }
+
     static int getInt(const char* s){
         while(true){
         std::cout << s << ": ";
@@ -61,6 +77,12 @@ public:
         return res;
     }
 
+    /**
+     * Prints all information about flights. Worst case: O(n), where n is the size of flights
+     * @param flights
+     * @param cities
+     * @param airports
+     */
     static void printFlightList(const list<flight>& flights, const Cities& cities, const Airports& airports){
         std::cout << "\nDEP  " << "ARR  " << "AIRL\n";
         std::cout << "-------------\n";
@@ -101,7 +123,13 @@ public:
     }
 
 
-    static vector<std::string> getAirportsUserChoice(const Airports& airports){
+    /**
+     * Get airports given the code, city or coordinates
+     * @param airports
+     * @param cities
+     * @return Returns a vector with all airports that correspond to the filters the user gave.
+     */
+    static vector<std::string> getAirportsUserChoice(const Airports& airports, const Cities& cities){
         print("How do you want to refer to the airport(s)?");
         printlist({"IATA", "City Name", "Geographic Coordinates"});
 
@@ -111,8 +139,9 @@ public:
             return {getAirport(airports)};
         }
         if(g == 1){
-            std::string city = getString("In which city");
-            return airports.getAirportsInCity(city);
+            std::string city = getCity(cities);
+            unsigned char country = cities.getCountry(city);
+            return airports.getAirportsInCity(city, country);
         }
         if(g == 2){
             float lat = getFloat("Latitude");
@@ -123,6 +152,11 @@ public:
         return r;
     }
 
+    /**
+     *
+     * @param airports
+     * @return Returns always a valid airport based on user input
+     */
     static std::string getAirport(const Airports& airports){
         std::string given;
 
@@ -178,6 +212,13 @@ public:
         }
     }
 
+    static void printAirportsModel(const Airports& airports) {
+        std::cout << "CODE       NAME      CITY  COUNTRY";
+        for(auto airp : airports.getAirports()){
+            std::cout << airp.getCode() << " " << airp.getName() << " " <<  airp.getCity() << " " << (int) airp.getCountry() << endl;
+        }
+    }
+
     static void printVectorOfVectorOfFlights(const vector<vector<std::string>>& options) {
         if (options.empty()) {
             cout << "There is no option available" << endl;
@@ -219,6 +260,22 @@ public:
             }
             cout << "\n\n";
         }
+    }
+
+    static void printVector(vector<std::string> vector1) {
+        for(int i = 0; i < vector1.size(); i++){
+            std::cout << i << " : " << vector1[i] << endl;
+        }
+        std::cout << endl;
+    }
+
+    static void printAirlines(const Airlines& airlines){
+        std::cout << "CODE  CALLSIGN       NAME   COUNTRY" << endl;
+
+        for(auto airline : airlines.getAirlines()){
+            std::cout << airline.getCode() << "  " << airline.getCallSign() << "   " << airline.getName() << "   " << (int) airline.getCountry() << endl;
+        }
+
     }
 };
 
