@@ -42,11 +42,12 @@ public:
      */
     static std::string getCity(const Cities& cities){
         std::cout << "Insert City Name: ";
-        std::string city;
-        std::cin >> city;
+        char city[60];
+        int size;
+        std::cin.getline(city, 59);
         while(!cities.doesCityExist(city)){
             std::cout << "City does not exist. Insert city name: ";
-            std::cin >> city;
+            std::cin.getline(city, 59);
         }
         return city;
     }
@@ -177,8 +178,13 @@ public:
         vector<std::string> res;
         std::string answer;
 
-        cout << "Do you want to avoid any airline? (y/n)  ";
+        cout << "Do you have any restrictions with the airlines? (y/n)  ";
         cin >> answer;
+        if (answer == "n") return res;
+
+        cout << "\nDo you want to:\n  1) Minimize the number of different airlines\n  2) Avoid some specific airlines\n";
+        cin >> answer;
+        if (answer == "1") return {"MINIMIZE"};
 
         while (answer != "n") {
             cout << "Write one airline code or 'n' if you are done. \n";
@@ -269,13 +275,34 @@ public:
         std::cout << endl;
     }
 
-    static void printAirlines(const Airlines& airlines){
+    static void printAirlines(const Airlines& airlines) {
         std::cout << "CODE  CALLSIGN       NAME   COUNTRY" << endl;
 
-        for(auto airline : airlines.getAirlines()){
-            std::cout << airline.getCode() << "  " << airline.getCallSign() << "   " << airline.getName() << "   " << (int) airline.getCountry() << endl;
+        for (auto airline: airlines.getAirlines()) {
+            std::cout << airline.getCode() << "  " << airline.getCallSign() << "   " << airline.getName() << "   "
+                      << (int) airline.getCountry() << endl;
+        }
+    }
+
+
+    static void printVectorOfVectorOfFlightsWithAirlines2(const vector<vector<pair<std::string, std::string>>>& options) {
+        if (options.empty()) {
+            cout << "There is no option available" << endl;
+            return;
         }
 
+        for (int i = 1; i <= options.size(); i++) {
+            const vector<pair<std::string, std::string>>& aux = options[i-1];
+
+            cout << "Option " << i << ":\n";
+
+            for (int j = 0; j < aux.size(); j++) {
+
+                if (j != 0) cout << " -> [" << aux[j].second << "] -> ";
+                cout << aux[j].first;
+            }
+            cout << "\n\n";
+        }
     }
 };
 

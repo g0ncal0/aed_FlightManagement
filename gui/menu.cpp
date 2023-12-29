@@ -8,6 +8,7 @@
 
 menu::menu(Model& model) {
     gui::print("HELLO!");
+    gui::print("Insert -1 to quit!");
     this->model = model;
     prompt();
     while(true){

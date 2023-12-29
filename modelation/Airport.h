@@ -75,11 +75,14 @@ public:
     }
 
 
-
+    /**
+     * Returns airports in a city. O(n), where n is the size of airports
+     * @param c
+     * @param country
+     * @return
+     */
     std::vector<std::string> getAirportsInCity(std::string c, unsigned char country) const{
         std::vector<std::string> res;
-
-
 
         std::vector<unsigned char> countries;
         for(auto air : airports){
@@ -98,6 +101,12 @@ public:
         return res;
     }
 
+    /**
+     * Returns airports that are close to a certain latitude and longitude. O(n), for airports size.
+     * @param lat latitude
+     * @param lon longitude
+     * @return
+     */
     std::vector<std::string> getAirportsOnCoordinates(float lat, float lon) const{
         int min_distance = 100000;
         std::vector<std::string> res;
