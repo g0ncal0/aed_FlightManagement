@@ -38,6 +38,11 @@ int main() {
     }*/
 
 
+    for(auto c : cities.getCities()){
+        if(c.first == "Birmingham"){
+            std::cout << c.second;
+        }
+    }
 
     Model model = Model();
     model.setAirlines(airlines);
@@ -45,6 +50,7 @@ int main() {
     model.setCities(cities);
     model.setCountries(countries);
     model.setFlight(flights);
+
     menu m = menu(model);
 
     /*ifstream f("../dataset/airports.csv");

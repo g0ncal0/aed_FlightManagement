@@ -27,7 +27,7 @@ struct parccHash
     // Equality function
 
     bool operator() (const parcc& p1, const parcc& p2) const {
-        if(p1.first == p2.first){
+        if(p1.first == p2.first && p1.second == p2.second){
             return true;
         }
         return false;
@@ -49,14 +49,15 @@ public:
     }
 
     bool doesCityExist(std::string cityname) const{
-        auto it = cities.find({cityname, 0});
-        if(it != cities.end()){
-            return true;
+        for(auto c : cities){
+            if(c.first == cityname){
+                return true;
+            }
         }
         return false;
     }
 
-    unsigned char getCountry(std::string city){
+    unsigned char getCountry(std::string city) const{
         std::vector<unsigned char> country;
         for(auto c : cities){
             if(c.first == city){
@@ -69,9 +70,10 @@ public:
         if(country.size() == 1){
             return country[0];
         }else{
-            std::cout << "There are " << country.size() << " cities with the same name.";
-            for(auto c : country){
-                std::cout << "Country code: " << c << std::endl;
+            std::cout << "There are " << country.size() << " cities with the same name." << std::endl;
+
+            for(int i = 0; i < country.size(); i++){
+                std::cout << i << " > Country code: " << (int) country[i] << std::endl;
             }
             std::cout << "Which country do you choose?";
             unsigned char given;
@@ -85,10 +87,7 @@ public:
 
 
     unsetcities getCities(){return cities;}
-    unsigned char getCountry(std::string city) const{
-        auto c = cities.find(parcc(city, 0));
-        return c->second;
-    }
+
 };
 
 class Countries {

@@ -43,8 +43,7 @@ public:
     static std::string getCity(const Cities& cities){
         std::cout << "Insert City Name: ";
         char city[60];
-        int size;
-        std::cin.getline(city, 59);
+        std::cin >> city;
         while(!cities.doesCityExist(city)){
             std::cout << "City does not exist. Insert city name: ";
             std::cin.getline(city, 59);
