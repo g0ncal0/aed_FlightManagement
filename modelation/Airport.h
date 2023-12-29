@@ -70,8 +70,10 @@ public:
         return airports;
     }
 
+
     std::vector<std::string> getAirportsInCity(std::string c) const{
         std::vector<std::string> res;
+
         for(auto air : airports){
             if(air.getCity() == c){
                 res.push_back(air.getCode());
