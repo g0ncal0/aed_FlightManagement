@@ -349,3 +349,102 @@ vector<vector<pair<std::string, vector<std::string>>>> Model::bestFlightOptionsW
 
     return res;
 }
+
+vector<vector<pair<std::string, std::string>>> Model::bestFlightWithMinimumAirlines_aux(const std::string& src, const std::string& dest) {
+    vector<vector<pair<std::string, std::string>>> res;
+
+    for (Vertex * vertex : flights.getVertexSet()) {
+        vertex->setVisited(false);
+        vertex->setProcessing(false);
+    }
+
+    Vertex * vertex_src = flights.findVertex(src);
+    vertex_src->setVisited(true);
+
+    queue<pair<Vertex *, vector<pair<std::string, std::string>>>> q;
+    q.push({vertex_src, {{vertex_src->getIATA(), ""}}});
+
+    bool check_done = false;
+
+    while (!q.empty() && !check_done) {
+        int level_size = (int) q.size();
+
+        vector<Vertex *> processing;
+
+        for (int i = 0; i < level_size; i++) {
+            pair<Vertex *, vector<pair<std::string, std::string>>> visiting = q.front();
+            q.pop();
+            Vertex * vertex = visiting.first;
+
+            for (const Edge& edge : vertex->getAdj()) {
+
+                if (edge.getDest()->getIATA() == dest) {
+                    check_done = true;
+
+                    for (const std::string& airline : edge.getAirlines()) {
+                        vector<pair<std::string, std::string>> aux;
+                        for (const auto& par : visiting.second) aux.push_back(par);
+                        aux.emplace_back(dest, airline);
+                        res.push_back(aux);
+                    }
+                }
+
+                else if (!edge.getDest()->isVisited()) {
+                    edge.getDest()->setVisited(true);
+                    edge.getDest()->setProcessing(true);
+                    processing.push_back(edge.getDest());
+
+                    for (const std::string& airline : edge.getAirlines()) {
+                        vector<pair<std::string, std::string>> path;
+                        for (const auto& pair : visiting.second) path.push_back(pair);
+                        path.emplace_back(edge.getDest()->getIATA(), airline);
+                        q.emplace(edge.getDest(), path);
+                    }
+                }
+
+                else if (edge.getDest()->isProcessing()) {
+                    for (const std::string& airline : edge.getAirlines()) {
+                        vector<pair<std::string, std::string>> path;
+                        for (const auto& pair : visiting.second) path.push_back(pair);
+                        path.emplace_back(edge.getDest()->getIATA(), airline);
+                        q.emplace(edge.getDest(), path);
+                    }
+                }
+            }
+        }
+
+        for (Vertex * v : processing) v->setProcessing(false);
+    }
+
+    return res;
+}
+
+vector<vector<pair<std::string, std::string>>> Model::bestFlightWithMinimumAirlines(const vector<std::string>& sources, const vector<std::string>& destinations) {
+    vector<vector<pair<std::string, std::string>>> allOptions;
+
+    vector<vector<pair<std::string, std::string>>> aux;
+    for (const std::string& source : sources) {
+        for (const std::string& destination : destinations) {
+            aux = bestFlightWithMinimumAirlines_aux(source, destination);
+            allOptions.insert(allOptions.end(), aux.begin(), aux.end());
+        }
+    }
+
+    int minimumAirlines = INT_MAX;
+
+    vector<vector<pair<std::string, std::string>>> res;
+    for (const vector<pair<std::string, std::string>>& option : allOptions) {
+        set<std::string> differentAirlines;
+        for (const pair<std::string, std::string>& par : option) differentAirlines.insert(par.second);
+
+        if (differentAirlines.size() < minimumAirlines) {
+            minimumAirlines = differentAirlines.size();
+            res.clear();
+            res.push_back(option);
+        }
+
+        else if (differentAirlines.size() == minimumAirlines) res.push_back(option);
+    }
+
+    return res;
+}

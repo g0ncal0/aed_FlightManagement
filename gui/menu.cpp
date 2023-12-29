@@ -88,7 +88,8 @@ void menu::react(int action){
             airlinesToAvoid = gui::getAirlinesToAvoid();
 
             if (airlinesToAvoid.empty()) gui::printVectorOfVectorOfFlights(model.bestFlightOptions(sources, destinations));
-            else gui::printVectorOfVectorOfFlightsWithAirlines(model.bestFlightOptionsWithAirlinesToAvoid(sources, destinations, airlinesToAvoid));
+            else if (airlinesToAvoid[0] != "MINIMIZE") gui::printVectorOfVectorOfFlightsWithAirlines(model.bestFlightOptionsWithAirlinesToAvoid(sources, destinations, airlinesToAvoid));
+            else gui::printVectorOfVectorOfFlightsWithAirlines2(model.bestFlightWithMinimumAirlines(sources, destinations));
 
             break;
 

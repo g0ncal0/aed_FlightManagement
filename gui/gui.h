@@ -143,8 +143,13 @@ public:
         vector<std::string> res;
         std::string answer;
 
-        cout << "Do you want to avoid any airline? (y/n)  ";
+        cout << "Do you have any restrictions with the airlines? (y/n)  ";
         cin >> answer;
+        if (answer == "n") return res;
+
+        cout << "\nDo you want to:\n  1) Minimize the number of different airlines\n  2) Avoid some specific airlines\n";
+        cin >> answer;
+        if (answer == "1") return {"MINIMIZE"};
 
         while (answer != "n") {
             cout << "Write one airline code or 'n' if you are done. \n";
@@ -215,6 +220,26 @@ public:
                     for (int k = 1; k < airlines.size(); k++) cout << "," << airlines[k];
                     cout << "] -> ";
                 }
+                cout << aux[j].first;
+            }
+            cout << "\n\n";
+        }
+    }
+
+    static void printVectorOfVectorOfFlightsWithAirlines2(const vector<vector<pair<std::string, std::string>>>& options) {
+        if (options.empty()) {
+            cout << "There is no option available" << endl;
+            return;
+        }
+
+        for (int i = 1; i <= options.size(); i++) {
+            const vector<pair<std::string, std::string>>& aux = options[i-1];
+
+            cout << "Option " << i << ":\n";
+
+            for (int j = 0; j < aux.size(); j++) {
+
+                if (j != 0) cout << " -> [" << aux[j].second << "] -> ";
                 cout << aux[j].first;
             }
             cout << "\n\n";

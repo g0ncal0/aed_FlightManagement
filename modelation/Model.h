@@ -7,6 +7,7 @@
 
 #include <cmath>
 #include <algorithm>
+#include <climits>
 #include "Airport.h"
 #include "../graph/graph.h"
 #include "../parser/parser.h"
@@ -51,6 +52,8 @@ public:
     vector<vector<pair<std::string, vector<std::string>>>> bestFlightWithAirlinesToAvoid(const std::string& src, const std::string& dest, const vector<std::string>& airlinesToAvoid);
     vector<vector<std::string>> bestFlightOptions(const vector<std::string>& sources, const vector<std::string>& destinations);
     vector<vector<pair<std::string, vector<std::string>>>> bestFlightOptionsWithAirlinesToAvoid(const vector<std::string>& sources, const vector<std::string>& destinations, const vector<std::string>& airlinesToAvoid);
+    vector<vector<pair<std::string, std::string>>> bestFlightWithMinimumAirlines_aux(const std::string& src, const std::string& dest);
+    vector<vector<pair<std::string, std::string>>> bestFlightWithMinimumAirlines(const vector<std::string>& sources, const vector<std::string>& destinations);
 
     vector<string> highestAirTrafficCapacity(int k);
 };
