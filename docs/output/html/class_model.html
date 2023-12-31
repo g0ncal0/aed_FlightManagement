@@ -65,7 +65,6 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_model-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -102,15 +101,17 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>setCities</b> (<a cla
 <tr class="memitem:a447993cc8e3514469c4b2e9fa33c7d73"><td class="memItemLeft" align="right" valign="top"><a id="a447993cc8e3514469c4b2e9fa33c7d73"></a>
 <a class="el" href="class_cities.html">Cities</a>&#160;</td><td class="memItemRight" valign="bottom"><b>getCities</b> ()</td></tr>
 <tr class="separator:a447993cc8e3514469c4b2e9fa33c7d73"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a835c9a18e97c58aca7dd1f5b6d5161bd"><td class="memItemLeft" align="right" valign="top"><a id="a835c9a18e97c58aca7dd1f5b6d5161bd"></a>
+<a class="el" href="class_countries.html">Countries</a>&#160;</td><td class="memItemRight" valign="bottom"><b>getCountries</b> ()</td></tr>
+<tr class="separator:a835c9a18e97c58aca7dd1f5b6d5161bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7aa3b3d16e859b6cc82be1e19f97134e"><td class="memItemLeft" align="right" valign="top"><a id="a7aa3b3d16e859b6cc82be1e19f97134e"></a>
 list&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getStatistics</b> ()</td></tr>
 <tr class="separator:a7aa3b3d16e859b6cc82be1e19f97134e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa17af5a3a7cfbd90bd27893556c744c7"><td class="memItemLeft" align="right" valign="top"><a id="aa17af5a3a7cfbd90bd27893556c744c7"></a>
 list&lt; <a class="el" href="structflight.html">flight</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getFlightsOfAirline</b> (string airline)</td></tr>
 <tr class="separator:aa17af5a3a7cfbd90bd27893556c744c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4873c86f29dfb1082bd77e43f58d91ea"><td class="memItemLeft" align="right" valign="top"><a id="a4873c86f29dfb1082bd77e43f58d91ea"></a>
-list&lt; <a class="el" href="structflight.html">flight</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getFlightsOnCity</b> (string city)</td></tr>
-<tr class="separator:a4873c86f29dfb1082bd77e43f58d91ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac18b5b3fb7f987eb53b6fe0af4c5456b"><td class="memItemLeft" align="right" valign="top">list&lt; <a class="el" href="structflight.html">flight</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#ac18b5b3fb7f987eb53b6fe0af4c5456b">getFlightsOnCity</a> (string city, const <a class="el" href="class_cities.html">Cities</a> &amp;cities)</td></tr>
+<tr class="separator:ac18b5b3fb7f987eb53b6fe0af4c5456b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae370dfbe602fa65377bc6da0ff9970a5"><td class="memItemLeft" align="right" valign="top"><a id="ae370dfbe602fa65377bc6da0ff9970a5"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>countriesToWhichTravel</b> (list&lt; <a class="el" href="structflight.html">flight</a> &gt; &amp;flights)</td></tr>
 <tr class="separator:ae370dfbe602fa65377bc6da0ff9970a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -119,15 +120,24 @@ list&lt; <a class="el" href="structflight.html">flight</a> &gt;&#160;</td><td cl
 <tr class="separator:a9f733f9eb2a67db9bad9332a1cdadc73"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9dfd68a4b706b966ea081034016bdeec"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#a9dfd68a4b706b966ea081034016bdeec">maximumTrip</a> (list&lt; std::pair&lt; std::string, std::string &gt;&gt; &amp;res)</td></tr>
 <tr class="separator:a9dfd68a4b706b966ea081034016bdeec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5808ae49894c9331376890ff2c567f24"><td class="memItemLeft" align="right" valign="top"><a id="a5808ae49894c9331376890ff2c567f24"></a>
-unordered_set&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>essentialAirports</b> ()</td></tr>
+<tr class="memitem:a5808ae49894c9331376890ff2c567f24"><td class="memItemLeft" align="right" valign="top">unordered_set&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#a5808ae49894c9331376890ff2c567f24">essentialAirports</a> ()</td></tr>
 <tr class="separator:a5808ae49894c9331376890ff2c567f24"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
-Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a5f42a437599e09b5076607ad15860337"><td class="memItemLeft" align="right" valign="top"><a id="a5f42a437599e09b5076607ad15860337"></a>
-static double&#160;</td><td class="memItemRight" valign="bottom"><b>calculateDistance</b> (double lat1, double lon1, double lat2, double lon2)</td></tr>
-<tr class="separator:a5f42a437599e09b5076607ad15860337"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b3319319909a7534e58a005ee1ebbdc"><td class="memItemLeft" align="right" valign="top">vector&lt; vector&lt; std::string &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#a5b3319319909a7534e58a005ee1ebbdc">bestFlight</a> (const std::string &amp;src, const std::string &amp;dest)</td></tr>
+<tr class="separator:a5b3319319909a7534e58a005ee1ebbdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac71fdc76dd0a07952b73d1fa5b83a173"><td class="memItemLeft" align="right" valign="top">vector&lt; vector&lt; pair&lt; std::string, vector&lt; std::string &gt; &gt; &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#ac71fdc76dd0a07952b73d1fa5b83a173">bestFlightWithAirlinesToAvoid</a> (const std::string &amp;src, const std::string &amp;dest, const vector&lt; std::string &gt; &amp;airlinesToAvoid)</td></tr>
+<tr class="separator:ac71fdc76dd0a07952b73d1fa5b83a173"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5bbcdbef5bcab1665c59e38c44b27894"><td class="memItemLeft" align="right" valign="top">vector&lt; vector&lt; std::string &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#a5bbcdbef5bcab1665c59e38c44b27894">bestFlightOptions</a> (const vector&lt; std::string &gt; &amp;sources, const vector&lt; std::string &gt; &amp;destinations)</td></tr>
+<tr class="separator:a5bbcdbef5bcab1665c59e38c44b27894"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73fb8257033fba50afe23e6622b8e86e"><td class="memItemLeft" align="right" valign="top"><a id="a73fb8257033fba50afe23e6622b8e86e"></a>
+vector&lt; vector&lt; pair&lt; std::string, vector&lt; std::string &gt; &gt; &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>bestFlightOptionsWithAirlinesToAvoid</b> (const vector&lt; std::string &gt; &amp;sources, const vector&lt; std::string &gt; &amp;destinations, const vector&lt; std::string &gt; &amp;airlinesToAvoid)</td></tr>
+<tr class="separator:a73fb8257033fba50afe23e6622b8e86e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adba4a6b40360cacf617139dd65c4b774"><td class="memItemLeft" align="right" valign="top"><a id="adba4a6b40360cacf617139dd65c4b774"></a>
+vector&lt; vector&lt; pair&lt; std::string, std::string &gt; &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>bestFlightWithMinimumAirlines_aux</b> (const std::string &amp;src, const std::string &amp;dest)</td></tr>
+<tr class="separator:adba4a6b40360cacf617139dd65c4b774"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a902a32f859ead3ed3a977b804a1d4b41"><td class="memItemLeft" align="right" valign="top">vector&lt; vector&lt; pair&lt; std::string, std::string &gt; &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#a902a32f859ead3ed3a977b804a1d4b41">bestFlightWithMinimumAirlines</a> (const vector&lt; std::string &gt; &amp;sources, const vector&lt; std::string &gt; &amp;destinations)</td></tr>
+<tr class="separator:a902a32f859ead3ed3a977b804a1d4b41"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af474f3911e9f444d98d008879f3a2f93"><td class="memItemLeft" align="right" valign="top">vector&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#af474f3911e9f444d98d008879f3a2f93">highestAirTrafficCapacity</a> (int k)</td></tr>
+<tr class="separator:af474f3911e9f444d98d008879f3a2f93"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -148,6 +158,236 @@ Private Attributes</h2></td></tr>
 <tr class="separator:ac70b26a90be25ab9afd29873b44cf1bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a5b3319319909a7534e58a005ee1ebbdc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b3319319909a7534e58a005ee1ebbdc">&#9670;&nbsp;</a></span>bestFlight()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">vector&lt; vector&lt; std::string &gt; &gt; Model::bestFlight </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>src</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>dest</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Function to find the best flights from airport with code src to airport with code dest. O(V + E) </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">src</td><td>the code of the source airport </td></tr>
+    <tr><td class="paramname">dest</td><td>the code of the destination airport </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a vector with all the best options for this flight </dd></dl>
+
+</div>
+</div>
+<a id="a5bbcdbef5bcab1665c59e38c44b27894"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5bbcdbef5bcab1665c59e38c44b27894">&#9670;&nbsp;</a></span>bestFlightOptions()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">vector&lt; vector&lt; std::string &gt; &gt; Model::bestFlightOptions </td>
+          <td>(</td>
+          <td class="paramtype">const vector&lt; std::string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>sources</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const vector&lt; std::string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>destinations</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Function to find the best flights from airport with codes in vector sources to airports with codes in vector destinations. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sources</td><td>the codes of the source airports </td></tr>
+    <tr><td class="paramname">destinations</td><td>the codes of the destination airports </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a vector with all the best options for this flight </dd></dl>
+
+</div>
+</div>
+<a id="ac71fdc76dd0a07952b73d1fa5b83a173"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac71fdc76dd0a07952b73d1fa5b83a173">&#9670;&nbsp;</a></span>bestFlightWithAirlinesToAvoid()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">vector&lt; vector&lt; pair&lt; std::string, vector&lt; std::string &gt; &gt; &gt; &gt; Model::bestFlightWithAirlinesToAvoid </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>src</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>dest</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const vector&lt; std::string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>airlinesToAvoid</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Function to find the best flights from airport with code src to airport with code dest avoiding some airlines. O(V + E) </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">src</td><td>the code of the source airport </td></tr>
+    <tr><td class="paramname">dest</td><td>the code of the destination airport </td></tr>
+    <tr><td class="paramname">airlinesToAvoid</td><td>the codes of airlines to avoid </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a vector with all the best options for this flight </dd></dl>
+
+</div>
+</div>
+<a id="a902a32f859ead3ed3a977b804a1d4b41"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a902a32f859ead3ed3a977b804a1d4b41">&#9670;&nbsp;</a></span>bestFlightWithMinimumAirlines()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">vector&lt; vector&lt; pair&lt; std::string, std::string &gt; &gt; &gt; Model::bestFlightWithMinimumAirlines </td>
+          <td>(</td>
+          <td class="paramtype">const vector&lt; std::string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>sources</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const vector&lt; std::string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>destinations</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Function to find the best flights from airport with code src to airport with code dest with the minimum number of different airlines. O(V + E) </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sources</td><td>the codes of the source airports </td></tr>
+    <tr><td class="paramname">destinations</td><td>the codes of the destination airports </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a vector with all the best options for this flight </dd></dl>
+
+</div>
+</div>
+<a id="a5808ae49894c9331376890ff2c567f24"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5808ae49894c9331376890ff2c567f24">&#9670;&nbsp;</a></span>essentialAirports()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unordered_set&lt; std::string &gt; Model::essentialAirports </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Function to discover all the essential airports, this means, when removed, areas of the network start to be unreachable. O(V + E) </p><dl class="section return"><dt>Returns</dt><dd>the codes of all the essential airports </dd></dl>
+
+</div>
+</div>
+<a id="ac18b5b3fb7f987eb53b6fe0af4c5456b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac18b5b3fb7f987eb53b6fe0af4c5456b">&#9670;&nbsp;</a></span>getFlightsOnCity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">list&lt; <a class="el" href="structflight.html">flight</a> &gt; Model::getFlightsOnCity </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>city</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="class_cities.html">Cities</a> &amp;&#160;</td>
+          <td class="paramname"><em>cities</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get the flights on a city by traversing all flights and checking if they are in the city </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">city</td><td></td></tr>
+    <tr><td class="paramname">cities</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="af474f3911e9f444d98d008879f3a2f93"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af474f3911e9f444d98d008879f3a2f93">&#9670;&nbsp;</a></span>highestAirTrafficCapacity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">vector&lt; std::string &gt; Model::highestAirTrafficCapacity </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>k</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Function to discover the k airports with the highest air traffic capacity. O(V + E) </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">k</td><td>the number of airports we want to see </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the k airports' codes with highest air traffic capacity </dd></dl>
+
+</div>
+</div>
 <a id="a9dfd68a4b706b966ea081034016bdeec"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9dfd68a4b706b966ea081034016bdeec">&#9670;&nbsp;</a></span>maximumTrip()</h2>
 
@@ -163,7 +403,7 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Function to discover the maximum number of stops between two airports and get this trips </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Function to discover the maximum number of stops between two airports and get this trips. O(V * (V + E)) </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">res</td><td>where all the possible maximum trips will be stored </td></tr>
   </table>
