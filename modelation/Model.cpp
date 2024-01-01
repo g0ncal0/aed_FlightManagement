@@ -250,9 +250,6 @@ vector<vector<std::string>> Model::bestFlightOptions(const vector<std::string>& 
         }
     }
 
-    std::sort(res.begin(), res.end());
-    res.erase(std::unique(res.begin(), res.end()), res.end());
-
 
     return res;
 }
