@@ -169,7 +169,7 @@ $(function() {
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            }</div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            std::string city = airports.getAirport(f.iata_arrival).getCity();</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> country = cities.getCountry(city);</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> country = cities.getCountryApprox(city);</div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;            <span class="keywordflow">if</span>(std::find(countriesfound.begin(), countriesfound.end(), country) == countriesfound.end()){</div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                countriesfound.push_back(country);</div>
@@ -360,7 +360,7 @@ $(function() {
 <div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;<span class="preprocessor">#endif </span><span class="comment">//AVIOES_GUI_H</span></div>
 <div class="ttc" id="aclass_airlines_html"><div class="ttname"><a href="class_airlines.html">Airlines</a></div><div class="ttdef"><b>Definition:</b> Airline.h:53</div></div>
 <div class="ttc" id="aclass_airports_html"><div class="ttname"><a href="class_airports.html">Airports</a></div><div class="ttdef"><b>Definition:</b> Airport.h:63</div></div>
-<div class="ttc" id="aclass_airports_html_a84cb84f808a3420f65b7100e543c6030"><div class="ttname"><a href="class_airports.html#a84cb84f808a3420f65b7100e543c6030">Airports::getAirportsOnCoordinates</a></div><div class="ttdeci">std::vector&lt; std::string &gt; getAirportsOnCoordinates(float lat, float lon) const</div><div class="ttdef"><b>Definition:</b> Airport.h:110</div></div>
+<div class="ttc" id="aclass_airports_html_a84cb84f808a3420f65b7100e543c6030"><div class="ttname"><a href="class_airports.html#a84cb84f808a3420f65b7100e543c6030">Airports::getAirportsOnCoordinates</a></div><div class="ttdeci">std::vector&lt; std::string &gt; getAirportsOnCoordinates(float lat, float lon) const</div><div class="ttdef"><b>Definition:</b> Airport.h:102</div></div>
 <div class="ttc" id="aclass_airports_html_afc7d2d6efbb5a80b40e008d4b0eeb1b7"><div class="ttname"><a href="class_airports.html#afc7d2d6efbb5a80b40e008d4b0eeb1b7">Airports::getAirportsInCity</a></div><div class="ttdeci">std::vector&lt; std::string &gt; getAirportsInCity(std::string c, unsigned char country) const</div><div class="ttdef"><b>Definition:</b> Airport.h:84</div></div>
 <div class="ttc" id="aclass_cities_html"><div class="ttname"><a href="class_cities.html">Cities</a></div><div class="ttdef"><b>Definition:</b> Location.h:41</div></div>
 <div class="ttc" id="aclassgui_html"><div class="ttname"><a href="classgui.html">gui</a></div><div class="ttdef"><b>Definition:</b> gui.h:16</div></div>
