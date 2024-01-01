@@ -252,6 +252,7 @@ unordered_set<std::string> Graph::articulationPoints() {
     for (Vertex * vertex : vertexSet) {
         vertex->setNum(-1);
         vertex->setLow(-1);
+        for (const Edge& edge : vertex->getAdj()) edge.getDest()->addEdge(vertex, edge.weight);
     }
 
     for (Vertex * vertex : vertexSet) {

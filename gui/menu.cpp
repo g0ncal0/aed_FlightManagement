@@ -121,6 +121,5 @@ void menu::react(int action){
         case 12:
             gui::printAirportsModel(model.getAirports());
             break;
-
     }
 }
