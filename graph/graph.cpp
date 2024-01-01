@@ -240,6 +240,9 @@ void Graph::dfs_articulationPoints(Vertex *v, stack<Vertex*> &s, unordered_set<s
         }
         else if (v->isProcessing()) v->setLow(min(v->getLow(), edge.getDest()->getNum()));
     }
+
+    if (v->getNum() == 1 && child == 0) i = 1;
+
     v->setProcessing(false);
 }
 
