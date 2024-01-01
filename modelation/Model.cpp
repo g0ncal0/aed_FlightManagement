@@ -227,7 +227,7 @@ vector<vector<std::string>> Model::bestFlight(const std::string& src, const std:
             }
         }
 
-        flights.setDefaults();
+        for (Vertex * v : processing) v->setProcessing(false);
     }
 
     return res;
@@ -249,6 +249,10 @@ vector<vector<std::string>> Model::bestFlightOptions(const vector<std::string>& 
             res.insert(res.end(), aux.begin(), aux.end());
         }
     }
+
+    std::sort(res.begin(), res.end());
+    res.erase(std::unique(res.begin(), res.end()), res.end());
+
 
     return res;
 }
@@ -361,7 +365,7 @@ vector<vector<pair<std::string, vector<std::string>>>> Model::bestFlightWithAirl
             }
         }
 
-        flights.setDefaults();
+        for (Vertex * v : processing) v->setProcessing(false);
     }
 
     return res;

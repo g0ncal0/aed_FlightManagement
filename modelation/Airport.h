@@ -84,17 +84,9 @@ public:
     std::vector<std::string> getAirportsInCity(std::string c, unsigned char country) const{
         std::vector<std::string> res;
 
-        std::vector<unsigned char> countries;
-        for(auto air : airports){
-            if(air.getCity() == c){
-                res.push_back(air.getCode());
-                countries.push_back(air.getCountry());
-            }
-        }
-
 
         for(auto air : airports){
-            if(air.getCity() == c){
+            if(air.getCity() == c && air.getCountry() == country){
                 res.push_back(air.getCode());
             }
         }
