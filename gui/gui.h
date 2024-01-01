@@ -107,7 +107,7 @@ public:
             }
 
             std::string city = airports.getAirport(f.iata_arrival).getCity();
-            unsigned char country = cities.getCountry(city);
+            unsigned char country = cities.getCountryApprox(city);
 
             if(std::find(countriesfound.begin(), countriesfound.end(), country) == countriesfound.end()){
                 countriesfound.push_back(country);

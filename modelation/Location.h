@@ -84,6 +84,14 @@ public:
             return country[0];
         }
     }
+    unsigned char getCountryApprox(std::string city) const{
+        for(auto c : cities){
+            if(c.first == city){
+                return c.second;
+            }
+        }
+        return 0;
+    }
 
 
     unsetcities getCities(){return cities;}

@@ -38,12 +38,6 @@ int main() {
     }*/
 
 
-    for(auto c : cities.getCities()){
-        if(c.first == "Birmingham"){
-            std::cout << c.second;
-        }
-    }
-
     Model model = Model();
     model.setAirlines(airlines);
     model.setAirports(airports);

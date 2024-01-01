@@ -39,7 +39,7 @@ int Model::countriesToWhichTravel(list<flight>& flights){
     list<unsigned char> countriesknown;
     for(auto f : flights){
         string city = airports.getAirport(f.iata_arrival).getCity();
-        unsigned char country = cities.getCountry(city);
+        unsigned char country = cities.getCountryApprox(city);
         if(std::find(countriesknown.begin(), countriesknown.end(),country) != countriesknown.end()){
             countriesknown.push_back(country);
         }
