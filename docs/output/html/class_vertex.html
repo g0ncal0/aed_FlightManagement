@@ -124,11 +124,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>addAdj</b> (const <a 
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:a80189017e5f5be4084232e5495007c72"><td class="memItemLeft" align="right" valign="top"><a id="a80189017e5f5be4084232e5495007c72"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>addEdge</b> (<a class="el" href="class_vertex.html">Vertex</a> *dest, double w)</td></tr>
+<tr class="memitem:a80189017e5f5be4084232e5495007c72"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_vertex.html#a80189017e5f5be4084232e5495007c72">addEdge</a> (<a class="el" href="class_vertex.html">Vertex</a> *dest, double w)</td></tr>
 <tr class="separator:a80189017e5f5be4084232e5495007c72"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0fb9defc6bc64bd16e51bcf867c511cf"><td class="memItemLeft" align="right" valign="top"><a id="a0fb9defc6bc64bd16e51bcf867c511cf"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>removeEdgeTo</b> (<a class="el" href="class_vertex.html">Vertex</a> *d)</td></tr>
+<tr class="memitem:a0fb9defc6bc64bd16e51bcf867c511cf"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_vertex.html#a0fb9defc6bc64bd16e51bcf867c511cf">removeEdgeTo</a> (<a class="el" href="class_vertex.html">Vertex</a> *d)</td></tr>
 <tr class="separator:a0fb9defc6bc64bd16e51bcf867c511cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
@@ -158,6 +156,83 @@ Friends</h2></td></tr>
 class&#160;</td><td class="memItemRight" valign="bottom"><b>Graph</b></td></tr>
 <tr class="separator:afab89afd724f1b07b1aaad6bdc61c47a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a80189017e5f5be4084232e5495007c72"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a80189017e5f5be4084232e5495007c72">&#9670;&nbsp;</a></span>addEdge()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Vertex::addEdge </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_vertex.html">Vertex</a> *&#160;</td>
+          <td class="paramname"><em>d</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>w</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Auxiliary function to add an outgoing edge to a vertex (this), </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">d</td><td>destination of the edge </td></tr>
+    <tr><td class="paramname">w</td><td>weight of the edge </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a0fb9defc6bc64bd16e51bcf867c511cf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0fb9defc6bc64bd16e51bcf867c511cf">&#9670;&nbsp;</a></span>removeEdgeTo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Vertex::removeEdgeTo </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_vertex.html">Vertex</a> *&#160;</td>
+          <td class="paramname"><em>d</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Auxiliary function to remove an outgoing edge (with a given destination (d)) from a vertex (this). </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">d</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if successful, and false if such edge does not exist. </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>/home/goncalo/Desktop/AED/aed_project2/graph/<a class="el" href="graph_8h_source.html">graph.h</a></li>
 <li>/home/goncalo/Desktop/AED/aed_project2/graph/graph.cpp</li>

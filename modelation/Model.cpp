@@ -102,7 +102,7 @@ list<string> Model::getStatistics() {
 
 
 /**
- * Function to discover the maximum number of stops between two airports and get this trips. O(n), where n is the number of vertexes in flights (in other words, airports)
+ * Function to discover the maximum number of stops between two airports and get this trips. O(V * (V + E))
  * @param res where all the possible maximum trips will be stored
  * @return the maximum number of stopsS
  */
@@ -126,13 +126,21 @@ int Model::maximumTrip(list<std::pair<std::string, std::string>>& res) {
     return maxStops;
 }
 
+/**
+ * Function to discover all the essential airports, this means, when removed, areas of the network start to be unreachable. O(V + E)
+ * @return the codes of all the essential airports
+ */
 unordered_set<std::string> Model::essentialAirports() {
     unordered_set<std::string> essentialAirports = flights.articulationPoints();
     parser::parse_flights(flights, airports);
     return essentialAirports;
 }
 
-
+/**
+ * Function to discover the k airports with the highest air traffic capacity. O(V + E)
+ * @param k the number of airports we want to see
+ * @return the k airports' codes with highest air traffic capacity
+ */
 vector<std::string> Model::highestAirTrafficCapacity(int k){
     flights.setDefaults();
     for(Vertex* v : flights.getVertexSet()){
@@ -161,6 +169,12 @@ vector<std::string> Model::highestAirTrafficCapacity(int k){
     return res;
 }
 
+/**
+ * Function to find the best flights from airport with code src to airport with code dest. O(V + E)
+ * @param src the code of the source airport
+ * @param dest the code of the destination airport
+ * @return a vector with all the best options for this flight
+ */
 vector<vector<std::string>> Model::bestFlight(const std::string& src, const std::string& dest) {
     vector<vector<std::string>> res;
 
@@ -218,6 +232,33 @@ vector<vector<std::string>> Model::bestFlight(const std::string& src, const std:
     return res;
 }
 
+/**
+ * Function to find the best flights from airport with codes in vector sources to airports with codes in vector destinations.
+ * @param sources the codes of the source airports
+ * @param destinations the codes of the destination airports
+ * @return a vector with all the best options for this flight
+ */
+vector<vector<std::string>> Model::bestFlightOptions(const vector<std::string>& sources, const vector<std::string>& destinations) {
+    vector<vector<std::string>> res;
+
+    vector<vector<std::string>> aux;
+    for (const std::string& source : sources) {
+        for (const std::string& destination : destinations) {
+            aux = bestFlight(source, destination);
+            res.insert(res.end(), aux.begin(), aux.end());
+        }
+    }
+
+    return res;
+}
+
+/**
+ * Function to find the best flights from airport with code src to airport with code dest avoiding some airlines. O(V + E)
+ * @param src the code of the source airport
+ * @param dest the code of the destination airport
+ * @param airlinesToAvoid the codes of airlines to avoid
+ * @return a vector with all the best options for this flight
+ */
 vector<vector<pair<std::string, vector<std::string>>>> Model::bestFlightWithAirlinesToAvoid(const std::string& src, const std::string& dest, const vector<std::string>& airlinesToAvoid) {
     vector<vector<pair<std::string, vector<std::string>>>> res;
 
@@ -325,20 +366,6 @@ vector<vector<pair<std::string, vector<std::string>>>> Model::bestFlightWithAirl
     return res;
 }
 
-vector<vector<std::string>> Model::bestFlightOptions(const vector<std::string>& sources, const vector<std::string>& destinations) {
-    vector<vector<std::string>> res;
-
-    vector<vector<std::string>> aux;
-    for (const std::string& source : sources) {
-        for (const std::string& destination : destinations) {
-            aux = bestFlight(source, destination);
-            res.insert(res.end(), aux.begin(), aux.end());
-        }
-    }
-
-    return res;
-}
-
 vector<vector<pair<std::string, vector<std::string>>>> Model::bestFlightOptionsWithAirlinesToAvoid(const vector<std::string>& sources, const vector<std::string>& destinations, const vector<std::string>& airlinesToAvoid) {
     vector<vector<pair<std::string, vector<std::string>>>> res;
 
@@ -422,6 +449,12 @@ vector<vector<pair<std::string, std::string>>> Model::bestFlightWithMinimumAirli
     return res;
 }
 
+/**
+ * Function to find the best flights from airport with code src to airport with code dest with the minimum number of different airlines. O(V + E)
+ * @param sources the codes of the source airports
+ * @param destinations the codes of the destination airports
+ * @return a vector with all the best options for this flight
+ */
 vector<vector<pair<std::string, std::string>>> Model::bestFlightWithMinimumAirlines(const vector<std::string>& sources, const vector<std::string>& destinations) {
     vector<vector<pair<std::string, std::string>>> allOptions;
 

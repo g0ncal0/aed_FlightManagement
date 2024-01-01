@@ -81,17 +81,13 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:abb5e0517e2979c54eebdafc2a9875e8f"><td class="memItemLeft" align="right" valign="top"><a id="abb5e0517e2979c54eebdafc2a9875e8f"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>getNumVertex</b> () const</td></tr>
 <tr class="separator:abb5e0517e2979c54eebdafc2a9875e8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a167287fe7a540298e18908bff11956d1"><td class="memItemLeft" align="right" valign="top"><a id="a167287fe7a540298e18908bff11956d1"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>addVertex</b> (const string &amp;in)</td></tr>
+<tr class="memitem:a167287fe7a540298e18908bff11956d1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#a167287fe7a540298e18908bff11956d1">addVertex</a> (const string &amp;in)</td></tr>
 <tr class="separator:a167287fe7a540298e18908bff11956d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0d8c86c581492d03c3c0714f7e931ba8"><td class="memItemLeft" align="right" valign="top"><a id="a0d8c86c581492d03c3c0714f7e931ba8"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>removeVertex</b> (const string &amp;in)</td></tr>
+<tr class="memitem:a0d8c86c581492d03c3c0714f7e931ba8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#a0d8c86c581492d03c3c0714f7e931ba8">removeVertex</a> (const string &amp;in)</td></tr>
 <tr class="separator:a0d8c86c581492d03c3c0714f7e931ba8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abf1dc1a72bf118879ab1181eaa15f221"><td class="memItemLeft" align="right" valign="top"><a id="abf1dc1a72bf118879ab1181eaa15f221"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>addEdge</b> (const string &amp;sourc, const string &amp;dest, double w)</td></tr>
+<tr class="memitem:abf1dc1a72bf118879ab1181eaa15f221"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#abf1dc1a72bf118879ab1181eaa15f221">addEdge</a> (const string &amp;sourc, const string &amp;dest, double w)</td></tr>
 <tr class="separator:abf1dc1a72bf118879ab1181eaa15f221"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a839bf01eaca377019030d9359b98189a"><td class="memItemLeft" align="right" valign="top"><a id="a839bf01eaca377019030d9359b98189a"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>removeEdge</b> (const string &amp;sourc, const string &amp;dest)</td></tr>
+<tr class="memitem:a839bf01eaca377019030d9359b98189a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#a839bf01eaca377019030d9359b98189a">removeEdge</a> (const string &amp;sourc, const string &amp;dest)</td></tr>
 <tr class="separator:a839bf01eaca377019030d9359b98189a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a56576f9c2ee0afadc4b77dcbe3acb704"><td class="memItemLeft" align="right" valign="top"><a id="a56576f9c2ee0afadc4b77dcbe3acb704"></a>
 vector&lt; <a class="el" href="class_vertex.html">Vertex</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getVertexSet</b> () const</td></tr>
@@ -117,6 +113,11 @@ unordered_set&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bo
 <tr class="memitem:ae80066a55d820af224108d830b44a067"><td class="memItemLeft" align="right" valign="top"><a id="ae80066a55d820af224108d830b44a067"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>countEdges</b> () const</td></tr>
 <tr class="separator:ae80066a55d820af224108d830b44a067"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f360d628e6b66ad7dac65ed500b1a49"><td class="memItemLeft" align="right" valign="top">unordered_set&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#a6f360d628e6b66ad7dac65ed500b1a49">bfsmaxXstops</a> (string airport, int n)</td></tr>
+<tr class="separator:a6f360d628e6b66ad7dac65ed500b1a49"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8e470c4e5757aa29c32f75944b1979f"><td class="memItemLeft" align="right" valign="top"><a id="aa8e470c4e5757aa29c32f75944b1979f"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setDefaults</b> ()</td></tr>
+<tr class="separator:aa8e470c4e5757aa29c32f75944b1979f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
@@ -133,6 +134,172 @@ Private Attributes</h2></td></tr>
 vector&lt; <a class="el" href="class_vertex.html">Vertex</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>vertexSet</b></td></tr>
 <tr class="separator:a828b7f04ee093d89fc35aef9b43b2d2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="abf1dc1a72bf118879ab1181eaa15f221"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf1dc1a72bf118879ab1181eaa15f221">&#9670;&nbsp;</a></span>addEdge()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Graph::addEdge </td>
+          <td>(</td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>sourc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>dest</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>w</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Adds an edge to a graph (this), given the contents of the source and destination vertices and the edge weight (w). </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sourc</td><td>the code of the source </td></tr>
+    <tr><td class="paramname">dest</td><td>the code of the destination </td></tr>
+    <tr><td class="paramname">w</td><td>the weight of the edge </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if successful, and false if the source or destination vertex does not exist. </dd></dl>
+
+</div>
+</div>
+<a id="a167287fe7a540298e18908bff11956d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a167287fe7a540298e18908bff11956d1">&#9670;&nbsp;</a></span>addVertex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Graph::addVertex </td>
+          <td>(</td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>in</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Adds a vertex with a given content or info (in) to a graph (this). </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">in</td><td>the content of the vertex </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if successful, and false if a vertex with that content already exists. </dd></dl>
+
+</div>
+</div>
+<a id="a6f360d628e6b66ad7dac65ed500b1a49"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f360d628e6b66ad7dac65ed500b1a49">&#9670;&nbsp;</a></span>bfsmaxXstops()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unordered_set&lt; string &gt; Graph::bfsmaxXstops </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>airport</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Function to find all the possible destinations from one airport with max n stops. O(V + E) </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">airport</td><td>the code of the source airport </td></tr>
+    <tr><td class="paramname">n</td><td>max stops </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the codes of all possible destinations </dd></dl>
+
+</div>
+</div>
+<a id="a839bf01eaca377019030d9359b98189a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a839bf01eaca377019030d9359b98189a">&#9670;&nbsp;</a></span>removeEdge()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Graph::removeEdge </td>
+          <td>(</td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>sourc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>dest</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Removes an edge from a graph (this). </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sourc</td><td>source of the edge </td></tr>
+    <tr><td class="paramname">dest</td><td>destination of the edge </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if successful, and false if such edge does not exist. </dd></dl>
+
+</div>
+</div>
+<a id="a0d8c86c581492d03c3c0714f7e931ba8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d8c86c581492d03c3c0714f7e931ba8">&#9670;&nbsp;</a></span>removeVertex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Graph::removeVertex </td>
+          <td>(</td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>in</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Removes a vertex with a given content (in) from a graph (this), and all outgoing and incoming edges. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">in</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if successful, and false if such vertex does not exist. </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>/home/goncalo/Desktop/AED/aed_project2/graph/<a class="el" href="graph_8h_source.html">graph.h</a></li>
 <li>/home/goncalo/Desktop/AED/aed_project2/graph/graph.cpp</li>

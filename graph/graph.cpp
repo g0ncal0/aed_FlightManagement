@@ -109,10 +109,10 @@ void Vertex::addAdj(const Edge& edge) {
     adj.push_back(edge);
 }
 
-
-/*
- *  Adds a vertex with a given content or info (in) to a graph (this).
- *  Returns true if successful, and false if a vertex with that content already exists.
+/**
+ * Adds a vertex with a given content or info (in) to a graph (this).
+ * @param in the content of the vertex
+ * @return true if successful, and false if a vertex with that content already exists.
  */
 bool Graph::addVertex(const string &in) {
     if ( findVertex(in) != NULL)
@@ -121,11 +121,12 @@ bool Graph::addVertex(const string &in) {
     return true;
 }
 
-
-/*
- * Adds an edge to a graph (this), given the contents of the source and
- * destination vertices and the edge weight (w).
- * Returns true if successful, and false if the source or destination vertex does not exist.
+/**
+ * Adds an edge to a graph (this), given the contents of the source and destination vertices and the edge weight (w).
+ * @param sourc the code of the source
+ * @param dest the code of the destination
+ * @param w the weight of the edge
+ * @return true if successful, and false if the source or destination vertex does not exist.
  */
 bool Graph::addEdge(const string &sourc, const string &dest, double w) {
     auto v1 = findVertex(sourc);
@@ -136,19 +137,20 @@ bool Graph::addEdge(const string &sourc, const string &dest, double w) {
     return true;
 }
 
-/*
+/**
  * Auxiliary function to add an outgoing edge to a vertex (this),
- * with a given destination vertex (d) and edge weight (w).
+ * @param d destination of the edge
+ * @param w weight of the edge
  */
 void Vertex::addEdge(Vertex *d, double w) {
     adj.push_back(Edge(d, w));
 }
 
-
-/*
+/**
  * Removes an edge from a graph (this).
- * The edge is identified by the source (sourc) and destination (dest) contents.
- * Returns true if successful, and false if such edge does not exist.
+ * @param sourc source of the edge
+ * @param dest destination of the edge
+ * @return true if successful, and false if such edge does not exist.
  */
 bool Graph::removeEdge(const string &sourc, const string &dest) {
     auto v1 = findVertex(sourc);
@@ -158,10 +160,10 @@ bool Graph::removeEdge(const string &sourc, const string &dest) {
     return v1->removeEdgeTo(v2);
 }
 
-/*
- * Auxiliary function to remove an outgoing edge (with a given destination (d))
- * from a vertex (this).
- * Returns true if successful, and false if such edge does not exist.
+/**
+ * Auxiliary function to remove an outgoing edge (with a given destination (d)) from a vertex (this).
+ * @param d
+ * @return true if successful, and false if such edge does not exist.
  */
 bool Vertex::removeEdgeTo(Vertex *d) {
     for (auto it = adj.begin(); it != adj.end(); it++)
@@ -172,10 +174,10 @@ bool Vertex::removeEdgeTo(Vertex *d) {
     return false;
 }
 
-/*
- *  Removes a vertex with a given content (in) from a graph (this), and
- *  all outgoing and incoming edges.
- *  Returns true if successful, and false if such vertex does not exist.
+/**
+ * Removes a vertex with a given content (in) from a graph (this), and all outgoing and incoming edges.
+ * @param in
+ * @return true if successful, and false if such vertex does not exist.
  */
 bool Graph::removeVertex(const string &in) {
     for (auto it = vertexSet.begin(); it != vertexSet.end(); it++)
@@ -303,7 +305,12 @@ void Graph::setDefaults(){
     }
 }
 
-
+/**
+ * Function to find all the possible destinations from one airport with max n stops. O(V + E)
+ * @param airport the code of the source airport
+ * @param n max stops
+ * @return the codes of all possible destinations
+ */
 unordered_set<string> Graph::bfsmaxXstops(std::string airport, int n){
     setDefaults();
     unordered_set<std::string> res;
