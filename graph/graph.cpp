@@ -334,3 +334,17 @@ unordered_set<string> Graph::bfsmaxXstops(std::string airport, int n){
     }
     return res;
 }
+
+Graph Graph::clone(){
+    Graph r;
+
+    for(auto v : vertexSet){
+        r.addVertex(v->getIATA());
+    }
+    for(auto v : vertexSet){
+        for(auto e : v->getAdj()){
+            r.addEdge(v->getIATA(), e.getDest()->getIATA(),0);
+        }
+    }
+    return r;
+}

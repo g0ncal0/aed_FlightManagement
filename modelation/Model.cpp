@@ -132,10 +132,8 @@ int Model::maximumTrip(list<std::pair<std::string, std::string>>& res) {
  * @return the codes of all the essential airports
  */
 unordered_set<std::string> Model::essentialAirports() {
-    unordered_set<std::string> essentialAirports = flights.articulationPoints();
-    flights = Graph();
-    for (const Airport& airport : airports.getAirports()) flights.addVertex(airport.getCode());
-    parser::parse_flights(flights, airports);
+    Graph temp = flights.clone();
+    unordered_set<std::string> essentialAirports = temp.articulationPoints();
     return essentialAirports;
 }
 

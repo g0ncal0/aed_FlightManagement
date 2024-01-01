@@ -93,6 +93,8 @@ public:
     unordered_set<std::string> bfsmaxXstops(string airport, int n);
 
     void setDefaults();
+
+    Graph clone();
 };
 
 
