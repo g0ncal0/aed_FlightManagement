@@ -53,7 +53,8 @@ list<flight> Model::getFlightsOfAirline(string airline){
     list<flight> res;
     for(Vertex* airport : flights.getVertexSet()){
         for(auto f : airport->getAdj()){
-            if(f.getAirlines().find(airline) != f.getAirlines().end()){
+            auto airl = f.getAirlines();
+            if(airl.find(airline) != airl.end()){
                 flight r = {airport->getIATA(), f.getDest()->getIATA(), airline};
                 res.push_back(r);
             }
